@@ -27,7 +27,7 @@ namespace EmployeeEntity
         [Required(ErrorMessage = "Id is required")]
         [MaxLength(5)]
         [Range(1, 99999)]
-        [RegularExpression(@"^[0-9]{5}", ErrorMessage = "Invalid Id")]
+        
         public string id { get; set; }
 
         [Required(ErrorMessage = "EmailId is required")]
@@ -44,20 +44,20 @@ namespace EmployeeEntity
         [Required(ErrorMessage = "Mobilenumber is required")]
         [MaxLength(10)]
         [DataType(DataType.PhoneNumber)]
- 	    [RegularExpression(@"^\(?([6-9]{1})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
+ 	    [RegularExpression(@"^([6-9]{1}[0-9]{9})$", ErrorMessage = "Entered phone format is not valid.")]
         public string mobileNumber { get; set; }
 
 
         [Required(ErrorMessage = "DOB is required")]
         [MaxLength(10)]
         [RegularExpression(@"(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$", ErrorMessage = "Invalid DOB")]
-        public DateTime dob { get; set; }
+        public string dob { get; set; }
 
 
         [Required(ErrorMessage = "DOJ is required")]
         [MaxLength(10)]
         [RegularExpression(@"(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$", ErrorMessage = "Invalid DOJ")]
-        public DateTime doj { get; set; }
+        public string doj { get; set; }
 
 
         [Required(ErrorMessage = "Username is required")]
@@ -68,13 +68,13 @@ namespace EmployeeEntity
 
         [Required(ErrorMessage = "Password is required")]
         [MaxLength(15)]
-        [RegularExpression("(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{4,8})$", ErrorMessage = "Invalid Password")]
+        [RegularExpression("([a-z]|[A-Z]|[0-9]|[\\W]){4}[a-zA-Z0-9\\W]{3,15}", ErrorMessage = "Invalid password")]
         public string password { get; set; }
 
 
         [Required(ErrorMessage = " Conform Password is required")]
         [MaxLength(15)]
-        [RegularExpression("(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{4,8})$", ErrorMessage = "Invalid conform Password")]
+        [Compare("password", ErrorMessage = "The passwords do not match.")]
         public string conformPassword { get; set; }
 
        

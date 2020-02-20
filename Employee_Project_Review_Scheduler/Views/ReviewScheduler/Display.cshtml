@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Display";
+}
+<h2>Employee Details</h2>
+<table border="1">
+    <tr>
+        <th>FirstName</th>
+        <th>Lastname</th>
+        <th>Id</th>
+        <th>EmailId</th>
+        <th>Mobile number</th>
+        <th>DOB</th>
+        <th>DOJ</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Designation</th>
+    </tr>
+    @foreach (EmployeeEntity.Employee item in (List<EmployeeEntity.Employee>)ViewData["Employees"])
+    {
+        <tr>
+            <td>
+                @item.firstName
+            </td>
+
+            <td>
+                @item.lastName
+            </td>
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.emailId
+            </td>
+            <td>
+                @item.mobileNumber
+            </td>
+            <td>
+                @item.dob
+            </td>
+            <td>
+                @item.doj
+            </td>
+            <td>
+                @item.userName
+            </td>
+            <td>
+                @item.password
+            </td>
+            <td>
+                @item.designation
+            </td>
+        </tr>
+    }
+</table>

@@ -3,6 +3,7 @@ using EmployeeEntity;
 using UserEntity;
 using EmployeeRepositary;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace Employee_Project_Review_Scheduler.Controllers
 {
@@ -35,16 +36,22 @@ namespace Employee_Project_Review_Scheduler.Controllers
                 return View();
             }           
         }
+        public ActionResult Display()
+        {
+            IEnumerable<Employee> employees = Repositary.GetEmployee();
+            ViewData["Employees"] = employees;
+            return View();
+        }
         public ViewResult AddEmployee()
         {
             return View();
         }
         [HttpPost]
-        public ViewResult AddEmployee(Employee employee)
+        public ActionResult AddEmployee(Employee employee)
         {
             repositary.Add(employee);
             Response.Write("Added Successfully");
-            return View();
+            return RedirectToAction("Display") ;
         }
     }
 }
