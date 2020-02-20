@@ -1,0 +1,40 @@
+﻿@model UserEntity.LoginUser
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/EmployeeMasterPage.cshtml";
+}
+
+
+<h2>Login Page</h2>
+@using (Html.BeginForm("Login", "ReviewScheduler", FormMethod.Post))
+{
+    <table cellpadding="8">
+        <tr>
+            <td>
+                @Html.Label("Username")
+            </td>
+            <td>
+                @Html.TextBox("Username")
+                @Html.ValidationMessageFor(model => model.username)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Password")
+            </td>
+            <td>
+                @Html.Password("Password")
+                @Html.ValidationMessageFor(model => model.password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="Submit" />
+
+            </td>
+        </tr>
+    </table>
+}
+
+

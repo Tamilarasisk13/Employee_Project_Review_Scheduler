@@ -1,0 +1,143 @@
+﻿@model EmployeeEntity.Employee
+
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/EmployeeMasterPage.cshtml";
+}
+
+@using (Html.BeginForm("AddEmployee", "ReviewScheduler", FormMethod.Post))
+{
+    <table cellpadding="8">
+        <tr>
+            <td>
+                @Html.Label("Firstname")
+
+            </td>
+            <td>
+                @Html.TextBox("Firstname")
+                @Html.ValidationMessageFor(model => model.firstName)
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Lastname")
+
+            </td>
+            <td>
+                @Html.TextBox("Lastname")
+                @Html.ValidationMessageFor(model => model.lastName)
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Id")
+
+            </td>
+            <td>
+                @Html.TextBox("Id")
+                @Html.ValidationMessageFor(model => model.id)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("EmailId")
+
+            </td>
+            <td>
+                @Html.TextBox("EmailId")
+                @Html.ValidationMessageFor(model => model.emailId)
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Gender")
+
+            </td>
+            <td>
+                Male
+                @Html.RadioButtonFor(model => model.gender, "Male")
+                Female
+                @Html.RadioButtonFor(model => model.gender, "Female")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("MobileNumber")
+
+            </td>
+            <td>
+                @Html.TextBox("MobileNumber")
+                @Html.ValidationMessageFor(model => model.mobileNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("DOB")
+            </td>
+            <td>
+                @Html.TextBox("DOB")
+                @Html.ValidationMessageFor(model => model.dob)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("DOJ")
+
+            </td>
+            <td>
+                @Html.TextBox("DOJ")
+                @Html.ValidationMessageFor(model => model.doj)
+            </td>
+        <tr>
+            <td>
+                @Html.Label("Username")
+
+            </td>
+            <td>
+                @Html.TextBox("Username")
+                @Html.ValidationMessageFor(model => model.userName)
+            </td>
+        <tr>
+            <td>
+                @Html.Label("Password")
+
+            </td>
+            <td>
+                @Html.Password("Password")
+                @Html.ValidationMessageFor(model => model.password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Conform Password")
+
+            </td>
+            <td>
+                @Html.Password("Conform Password")
+                @Html.ValidationMessageFor(model => model.conformPassword)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Designation")
+
+            </td>
+            <td>
+                @Html.EnumDropDownListFor(model => model.designation, "Select Designation")
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <input type="submit" id="Submit" />
+
+            </td>
+        </tr>
+    </table>
+}
+
+

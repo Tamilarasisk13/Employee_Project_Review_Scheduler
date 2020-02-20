@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header><h2><i>Employee Project Review Scheduler</i></h2></header>
+    <div>
+        @Html.ActionLink("Home", "Index", "ReviewScheduler")&nbsp
+        @Html.ActionLink("Login", "Login", "ReviewScheduler")&nbsp
+        @Html.ActionLink("AddEmployee", "AddEmployee", "ReviewScheduler")&nbsp
+        @RenderBody()
+    </div>
+</body>
+</html>
