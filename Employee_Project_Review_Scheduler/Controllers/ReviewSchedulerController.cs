@@ -32,7 +32,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
                 
             else
             {
-               // Response.Write("Username or password is incorrect");
+              
                 return View();
             }           
         }
