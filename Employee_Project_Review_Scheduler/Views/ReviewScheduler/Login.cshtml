@@ -1,10 +1,12 @@
-﻿@model UserEntity.LoginUser
+﻿@model EmployeeEntity.Employee
 
 @{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/EmployeeMasterPage.cshtml";
+    
 }
 <h2>Login Page</h2>
+@Html.Partial("PartialView");
+
 @using (Html.BeginForm("Login", "ReviewScheduler", FormMethod.Post))
 {
     <table cellpadding="8">
@@ -14,7 +16,7 @@
             </td>
             <td>
                 @Html.TextBox("Username")
-                @Html.ValidationMessageFor(model => model.username)
+                @Html.ValidationMessageFor(model => model.userName)
             </td>
         </tr>
         <tr>

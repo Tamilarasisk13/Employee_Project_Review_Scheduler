@@ -2,18 +2,19 @@
 using System.ComponentModel.DataAnnotations;
 namespace EmployeeEntity
 {
+    public enum Designation
+    {
+        HR,
+        Scheduler,
+        CEO,
+        Reviewer,
+        Reviewee,
+        Tester,
+        Developer
+    }
     public class Employee
     {
-        public enum Designation
-        {
-            HR,
-            Scheduler,
-            CEO,
-            Reviewer,
-            Reviewee,
-            Tester,
-            Developer
-        }
+        
         [Required(ErrorMessage = "Firstname is required")]
         [MaxLength(30)]
         [RegularExpression(@"([a-zA-Z\d]+[\w\d]*|)[a-zA-Z]+[\w\d.]*", ErrorMessage = "Invalid Lastname")]
@@ -24,11 +25,9 @@ namespace EmployeeEntity
         [RegularExpression(@"([a-zA-Z\d]+[\w\d]*|)[a-zA-Z]+[\w\d.]*", ErrorMessage = "Invalid Lastname")]
         public string lastName { get; set; }
 
-        [Required(ErrorMessage = "Id is required")]
-        [MaxLength(5)]
+        [Required(ErrorMessage = "Id is required")]        
         [Range(1, 99999)]
-        
-        public string id { get; set; }
+        public int id { get; set; }
 
         [Required(ErrorMessage = "EmailId is required")]
         [MaxLength(60)]
@@ -45,7 +44,7 @@ namespace EmployeeEntity
         [Required(ErrorMessage = "Mobilenumber is required")]
         [MaxLength(10)]
         [DataType(DataType.PhoneNumber)]
- 	    [RegularExpression(@"^([6-9]{1}[0-9]{9})$", ErrorMessage = "Entered phone format is not valid.")]
+        [RegularExpression(@"^([6-9]{1}[0-9]{9})$", ErrorMessage = "Entered phone format is not valid.")]
         public string mobileNumber { get; set; }
 
 
@@ -60,18 +59,15 @@ namespace EmployeeEntity
         [RegularExpression(@"(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$", ErrorMessage = "Invalid DOJ")]
         public string doj { get; set; }
 
-
         [Required(ErrorMessage = "Username is required")]
         [MaxLength(30)]
         [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Invalid Username ")]
         public string userName { get; set; }
 
-
         [Required(ErrorMessage = "Password is required")]
         [MaxLength(15)]
         [RegularExpression("([a-z]|[A-Z]|[0-9]|[\\W]){4}[a-zA-Z0-9\\W]{3,15}", ErrorMessage = "Invalid password")]
         public string password { get; set; }
-
 
         [Required(ErrorMessage = " Conform Password is required")]
         [MaxLength(15)]

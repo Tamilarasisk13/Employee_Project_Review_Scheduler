@@ -2,9 +2,8 @@
 
 @{
     ViewBag.Title = "AddEmployee";
-    Layout = "~/Views/Shared/EmployeeMasterPage.cshtml";
 }
-
+@Html.Partial("PartialView");
 @using (Html.BeginForm("AddEmployee", "ReviewScheduler", FormMethod.Post))
 {
     <table cellpadding="8">
@@ -130,7 +129,6 @@
             </td>
         </tr>
         <tr>
-
             <td>
                 <input type="submit" id="Submit" />
 

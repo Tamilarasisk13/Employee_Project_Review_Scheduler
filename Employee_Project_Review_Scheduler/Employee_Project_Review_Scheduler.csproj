@@ -140,7 +140,6 @@
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\EmployeeMasterPage.cshtml" />
-    <Content Include="Views\ReviewScheduler\Index.cshtml" />
     <Content Include="Views\ReviewScheduler\Login.cshtml" />
     <Content Include="Views\ReviewScheduler\AddEmployee.cshtml" />
   </ItemGroup>
@@ -161,6 +160,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\ReviewScheduler\Display.cshtml" />
+    <Content Include="Views\ReviewScheduler\Index.cshtml" />
+    <Content Include="Views\Shared\PartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,17 +174,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeEntiry\EmployeeEntity.csproj">
-      <Project>{7a86fc0a-028f-4c4a-96db-f98ec03d91e3}</Project>
+    <ProjectReference Include="..\EmployeeEntity\EmployeeEntity.csproj">
+      <Project>{8c8fdca6-ce3d-460e-9f16-6ca4d88e2f43}</Project>
       <Name>EmployeeEntity</Name>
     </ProjectReference>
     <ProjectReference Include="..\EmployeeRepositary\EmployeeRepositary.csproj">
       <Project>{034b2c7b-f599-49a2-b1d3-17ec5d106dcd}</Project>
       <Name>EmployeeRepositary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserEntity\UserEntity.csproj">
-      <Project>{7d2bbc70-ec93-4583-81f4-5bd149242014}</Project>
-      <Name>UserEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

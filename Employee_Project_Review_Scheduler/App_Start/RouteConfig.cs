@@ -16,7 +16,7 @@ namespace Employee_Project_Review_Scheduler
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ReviewScheduler", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "ReviewScheduler", action = "Start", id = UrlParameter.Optional }
             );
         }
     }

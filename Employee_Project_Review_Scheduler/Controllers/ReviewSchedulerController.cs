@@ -1,6 +1,5 @@
 ﻿
 using EmployeeEntity;
-using UserEntity;
 using EmployeeRepositary;
 using System.Web.Mvc;
 using System.Collections.Generic;
@@ -10,31 +9,41 @@ namespace Employee_Project_Review_Scheduler.Controllers
     public class ReviewSchedulerController : Controller
     {
         Repositary repositary = new Repositary();
-        // GET: ReviewScheduler
+        // GET: ReviewScheduler 
+       [ActionName("Start")]
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
+        }
+        [NonAction]
+        public int EmployeeCount()
+        {
+            return repositary.Count();
         }
         public ViewResult Login()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(LoginUser loginUser)
+        public ActionResult Login(string username, string password)
         {
             //repositary.Add(employee);
-            bool result = repositary.CheckLogin(loginUser);
-            if (result == true)
+            if (ModelState.IsValid)
             {
-                Response.Write("Login Successfully");
-                return RedirectToAction("Index");
+                bool result = repositary.CheckLogin(username,password);
+                if (result == true)
+                {
+                    Response.Write("Login Successfully");
+                    return View("Index");
+               
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
             }
-                
             else
-            {
-              
-                return View();
-            }           
+                return View("Index");
         }
         public ActionResult Display()
         {
@@ -49,9 +58,13 @@ namespace Employee_Project_Review_Scheduler.Controllers
         [HttpPost]
         public ActionResult AddEmployee(Employee employee)
         {
-            repositary.Add(employee);
-            Response.Write("Added Successfully");
-            return RedirectToAction("Display") ;
+            if (ModelState.IsValid)
+            {
+                repositary.Add(employee);
+                Response.Write("Added Successfully");
+                RedirectToAction("Display");
+            }
+            return View();
         }
     }
 }
