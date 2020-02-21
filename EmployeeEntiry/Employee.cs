@@ -77,7 +77,6 @@ namespace EmployeeEntity
         [Compare("password", ErrorMessage = "The passwords do not match.")]
         public string conformPassword { get; set; }
 
-       
         public Designation designation { get; set; }
 
 
