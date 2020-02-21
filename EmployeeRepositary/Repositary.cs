@@ -3,7 +3,6 @@ using EmployeeEntity;
 using UserEntity;
 using System.Collections.Generic;
 using static EmployeeEntity.Employee;
-
 namespace EmployeeRepositary
 {
     public class Repositary

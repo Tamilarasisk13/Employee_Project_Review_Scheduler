@@ -13,7 +13,6 @@ namespace UserEntity
         public string password { get; set; }
         public LoginUser()
         {
-
         }
         public LoginUser(string username, string password)
         {
