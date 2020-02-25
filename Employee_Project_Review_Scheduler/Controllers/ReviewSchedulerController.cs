@@ -3,6 +3,7 @@ using EmployeeEntity;
 using EmployeeRepositary;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Employee_Project_Review_Scheduler.Controllers
 {
@@ -10,9 +11,11 @@ namespace Employee_Project_Review_Scheduler.Controllers
     {
         Repositary repositary = new Repositary();
         // GET: ReviewScheduler 
-       [ActionName("Start")]
+        [ActionName("Start")]
         public ActionResult Index()
         {
+        
+
             return View("Index");
         }
         [NonAction]
@@ -27,18 +30,18 @@ namespace Employee_Project_Review_Scheduler.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            //repositary.Add(employee);
+      
             if (ModelState.IsValid)
             {
                 bool result = repositary.CheckLogin(username,password);
                 if (result == true)
                 {
                     Response.Write("Login Successfully");
-                    return View("Index");
-               
+                    return View("Index");              
                 }
                 else
                 {
+                    Response.Write("username or password is Invalid");
                     return RedirectToAction("Login");
                 }
             }
@@ -65,6 +68,29 @@ namespace Employee_Project_Review_Scheduler.Controllers
                 RedirectToAction("Display");
             }
             return View();
+        }
+        public ActionResult Delete(int id)
+        {
+            repositary.Delete(id);
+            TempData["Message"] = "Employee is deleted successfully";
+            return RedirectToAction("Index");
+        }
+        public ActionResult Edit(int id)
+        {
+            Employee employee = repositary.GetEmployeeById(id);
+            return View(employee);
+        }
+        [HttpPost]
+        public ActionResult Update(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                repositary.Update(employee);
+                TempData["Message"] = "Employee is Updated successfully";
+                return RedirectToAction("Display");
+            }
+            return RedirectToAction("Index");
+            //return View("Edit", employee);
         }
     }
 }

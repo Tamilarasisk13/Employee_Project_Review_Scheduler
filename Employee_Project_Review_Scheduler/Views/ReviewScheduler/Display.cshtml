@@ -4,7 +4,7 @@
 }
 <h2>Employee Details</h2>
 <table border="1">
-    <tr>
+    <tr>    
         <th>FirstName</th>
         <th>Lastname</th>
         <th>Id</th>
@@ -20,35 +20,40 @@
     {
         <tr>
             <td>
-                @item.firstName
+                @item.Firstname
             </td>
 
             <td>
-                @item.lastName
+                @item.Lastname
             </td>
             <td>
-                @item.id
+                @item.Id
             </td>
             <td>
-                @item.emailId
+                @item.EmailId
             </td>
             <td>
-                @item.mobileNumber
+                @item.Mobilenumber
             </td>
             <td>
-                @item.dob
+                @item.DOB
             </td>
             <td>
-                @item.doj
+                @item.DOJ
             </td>
             <td>
-                @item.userName
+                @item.Username
             </td>
             <td>
-                @item.password
+                @item.Password
             </td>
             <td>
-                @item.designation
+                @item.Designation
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Add", "AddEmployee")
             </td>
         </tr>
     }

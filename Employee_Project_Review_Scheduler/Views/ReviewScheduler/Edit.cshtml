@@ -1,44 +1,29 @@
 ﻿@model EmployeeEntity.Employee
 
 @{
-    ViewBag.Title = "AddEmployee";
+    ViewBag.Title = "Edit";
 }
-@Html.Partial("PartialView");
-@using (Html.BeginForm("AddEmployee", "ReviewScheduler", FormMethod.Post))
+
+<h2>Edit Employee</h2>
+@using (Html.BeginForm("Update", "ReviewScheduler", FormMethod.Post))
 {
+    @Html.HiddenFor(Model => Model.Id)
     <table cellpadding="8">
         <tr>
             <td>
-                @Html.Label("Firstname")
-
+                Employee Firstname
             </td>
             <td>
-                @Html.EditorFor(model => model.Firstname)
-                @Html.ValidationMessageFor(model => model.Firstname)
-
+                @Html.EditorFor(Model => Model.Firstname)
             </td>
         </tr>
         <tr>
             <td>
-                @Html.Label("Lastname")
-
+                Employee Firstname
             </td>
             <td>
-                @Html.EditorFor(model => model.Lastname)
-                @Html.ValidationMessageFor(model => model.Lastname)
-
+                @Html.EditorFor(Model => Model.Lastname)
             </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.Label("Id")
-
-            </td>
-            <td>
-                @Html.EditorFor(model => model.Id)
-                @Html.ValidationMessageFor(model => model.Id)
-            </td>
-
         </tr>
         <tr>
             <td>
@@ -46,8 +31,8 @@
 
             </td>
             <td>
-                @Html.EditorFor(model => model.EmailId)
-                @Html.ValidationMessageFor(model => model.EmailId)
+                @Html.EditorFor(Model => Model.EmailId)
+        
 
             </td>
         </tr>
@@ -68,8 +53,8 @@
 
             </td>
             <td>
-                @Html.EditorFor(model => model.Mobilenumber)
-                @Html.ValidationMessageFor(model => model.Mobilenumber)
+                @Html.EditorFor(Model => Model.Mobilenumber)
+            
             </td>
         </tr>
         <tr>
@@ -77,8 +62,8 @@
                 @Html.Label("DOB")
             </td>
             <td>
-                @Html.EditorFor(model => model.DOB)
-                @Html.ValidationMessageFor(model => model.DOB)
+                @Html.EditorFor(Model => Model.DOB)
+    
             </td>
         </tr>
         <tr>
@@ -87,8 +72,8 @@
 
             </td>
             <td>
-                @Html.EditorFor(model => model.DOJ)
-                @Html.ValidationMessageFor(model => model.DOJ)
+                @Html.EditorFor(Model => Model.DOJ)
+
             </td>
         <tr>
             <td>
@@ -96,8 +81,7 @@
 
             </td>
             <td>
-                @Html.EditorFor(model => model.Username)
-                @Html.ValidationMessageFor(model => model.Username)
+                @Html.EditorFor(Model => Model.Username)
             </td>
         <tr>
             <td>
@@ -105,18 +89,18 @@
 
             </td>
             <td>
-                @Html.PasswordFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
+                @Html.PasswordFor(Model => Model.Password)
+   
             </td>
         </tr>
         <tr>
             <td>
-                @Html.Label("Conform Password")
+                @Html.Label("ConformPassword")
 
             </td>
             <td>
-                @Html.PasswordFor(model => model.ConformPassword)
-                @Html.ValidationMessageFor(model => model.ConformPassword)
+                @Html.PasswordFor(Model => Model.ConformPassword)
+
             </td>
         </tr>
         <tr>
@@ -130,12 +114,12 @@
         </tr>
         <tr>
             <td>
+                @Html.ActionLink("Cancel", "Display")
+            </td>
+            <td>
                 <input type="submit" id="Submit" />
-
             </td>
         </tr>
-
     </table>
 }
-
 

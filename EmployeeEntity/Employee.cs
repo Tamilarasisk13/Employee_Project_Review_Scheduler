@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 namespace EmployeeEntity
 {
@@ -12,69 +13,68 @@ namespace EmployeeEntity
         Tester,
         Developer
     }
-    public class Employee
+    public class Employee 
     {
         
         [Required(ErrorMessage = "Firstname is required")]
         [MaxLength(30)]
         [RegularExpression(@"([a-zA-Z\d]+[\w\d]*|)[a-zA-Z]+[\w\d.]*", ErrorMessage = "Invalid Lastname")]
-        public string firstName { get; set; }
+        public string Firstname { get; set; }
 
         [Required(ErrorMessage = "Lastname is required")]
         [MaxLength(30)]
         [RegularExpression(@"([a-zA-Z\d]+[\w\d]*|)[a-zA-Z]+[\w\d.]*", ErrorMessage = "Invalid Lastname")]
-        public string lastName { get; set; }
+        public string Lastname { get; set; }
 
         [Required(ErrorMessage = "Id is required")]        
         [Range(1, 99999)]
-        public int id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "EmailId is required")]
         [MaxLength(60)]
-        //[DataType(DataType.EmailAddress, ErrorMessage = "Email is not valid")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Email is not valid")]
         //[RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
         //ErrorMessage = "Please enter correct email address")]
-        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Email is not valid")]
-        public string emailId { get; set; }
+        //[RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Email is not valid")]
+        public string EmailId { get; set; }
 
         [Required(ErrorMessage = "Gender is required")]
-        public string gender { get; set; }
+        public string Gender { get; set; }
 
 
         [Required(ErrorMessage = "Mobilenumber is required")]
-        [MaxLength(10)]
+        
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^([6-9]{1}[0-9]{9})$", ErrorMessage = "Entered phone format is not valid.")]
-        public string mobileNumber { get; set; }
+        public long Mobilenumber { get; set; }
 
 
         [Required(ErrorMessage = "DOB is required")]
-        [MaxLength(10)]
-        [RegularExpression(@"(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$", ErrorMessage = "Invalid DOB")]
-        public string dob { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
 
 
         [Required(ErrorMessage = "DOJ is required")]
-        [MaxLength(10)]
-        [RegularExpression(@"(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$", ErrorMessage = "Invalid DOJ")]
-        public string doj { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DOJ { get; set; }
 
         [Required(ErrorMessage = "Username is required")]
         [MaxLength(30)]
         [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Invalid Username ")]
-        public string userName { get; set; }
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
         [MaxLength(15)]
         [RegularExpression("([a-z]|[A-Z]|[0-9]|[\\W]){4}[a-zA-Z0-9\\W]{3,15}", ErrorMessage = "Invalid password")]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [Required(ErrorMessage = " Conform Password is required")]
         [MaxLength(15)]
-        [Compare("password", ErrorMessage = "The passwords do not match.")]
-        public string conformPassword { get; set; }
+        [Compare("Password", ErrorMessage = "The passwords do not match.")]
+        public string ConformPassword { get; set; }
 
-        public Designation designation { get; set; }
+        public Designation Designation { get; set; }
 
         //public Employee(string firstName, string lastName, int id, string emailId, string gender, long mobileNumber, DateTime dob, DateTime doj,string userName, string password, Designation designation )
         //{

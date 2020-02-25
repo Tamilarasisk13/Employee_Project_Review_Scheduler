@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee_Project_Review_Scheduler", "Employee_Project_Review_Scheduler\Employee_Project_Review_Scheduler.csproj", "{6118FF50-9B48-4493-B540-1599F317CFE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeRepositary", "EmployeeRepositary\EmployeeRepositary.csproj", "{034B2C7B-F599-49A2-B1D3-17EC5D106DCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDAL", "EmployeeRepositary\EmployeeDAL.csproj", "{034B2C7B-F599-49A2-B1D3-17EC5D106DCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeEntity", "EmployeeEntity\EmployeeEntity.csproj", "{8C8FDCA6-CE3D-460E-9F16-6CA4D88E2F43}"
 EndProject
