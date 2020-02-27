@@ -150,8 +150,6 @@
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_EmployeeMasterPage.cshtml" />
-    <Content Include="Views\ReviewScheduler\Login.cshtml" />
-    <Content Include="Views\ReviewScheduler\AddEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -159,7 +157,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,7 +173,10 @@
     <Content Include="Views\ReviewScheduler\Display.cshtml" />
     <Content Include="Views\ReviewScheduler\Index.cshtml" />
     <Content Include="Views\Shared\PartialView.cshtml" />
+    <Content Include="Views\ReviewScheduler\AddEmployee.cshtml" />
     <Content Include="Views\ReviewScheduler\Edit.cshtml" />
+    <Content Include="Views\ReviewScheduler\Login.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -188,6 +189,10 @@
     <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeBL\ReviewSchedulerBL.csproj">
+      <Project>{673688d1-8fef-4af9-8f33-4cff85ce37ed}</Project>
+      <Name>ReviewSchedulerBL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EmployeeEntity\EmployeeEntity.csproj">
       <Project>{8c8fdca6-ce3d-460e-9f16-6ca4d88e2f43}</Project>
       <Name>EmployeeEntity</Name>

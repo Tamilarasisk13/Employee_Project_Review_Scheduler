@@ -1,8 +1,5 @@
-﻿@model EmployeeEntity.Employee
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
 
-@{
-    ViewBag.Title = "Edit";
-}
 
 <h2>Edit Employee</h2>
 @using (Html.BeginForm("Update", "ReviewScheduler", FormMethod.Post))
@@ -32,7 +29,7 @@
             </td>
             <td>
                 @Html.EditorFor(Model => Model.EmailId)
-        
+
 
             </td>
         </tr>
@@ -54,7 +51,7 @@
             </td>
             <td>
                 @Html.EditorFor(Model => Model.Mobilenumber)
-            
+
             </td>
         </tr>
         <tr>
@@ -63,7 +60,7 @@
             </td>
             <td>
                 @Html.EditorFor(Model => Model.DOB)
-    
+
             </td>
         </tr>
         <tr>
@@ -90,7 +87,7 @@
             </td>
             <td>
                 @Html.PasswordFor(Model => Model.Password)
-   
+
             </td>
         </tr>
         <tr>
@@ -122,4 +119,6 @@
         </tr>
     </table>
 }
+
+
 

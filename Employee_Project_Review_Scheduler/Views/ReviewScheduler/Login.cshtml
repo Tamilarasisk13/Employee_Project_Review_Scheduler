@@ -1,9 +1,6 @@
-﻿@model EmployeeEntity.Employee
+﻿@model Employee_Project_Review_Scheduler.Models.Employee
 
-@{
-    ViewBag.Title = "Login";
-    
-}
+
 <h2>Login Page</h2>
 @Html.Partial("PartialView");
 
@@ -16,7 +13,7 @@
             </td>
             <td>
                 @Html.TextBox("Username")
-                @Html.ValidationMessageFor(model => model.userName)
+                @Html.ValidationMessageFor(model => model.Username)
             </td>
         </tr>
         <tr>
@@ -25,7 +22,7 @@
             </td>
             <td>
                 @Html.Password("Password")
-                @Html.ValidationMessageFor(model => model.password)
+                @Html.ValidationMessageFor(model => model.Password)
             </td>
         </tr>
         <tr>
@@ -36,5 +33,7 @@
         </tr>
     </table>
 }
+
+
 
 

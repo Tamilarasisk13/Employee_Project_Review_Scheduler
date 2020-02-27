@@ -4,13 +4,11 @@ using EmployeeEntity;
 
 namespace EmployeeRepositary
 {
-      public class EmployeeContext : DbContext
+    public class EmployeeContext : DbContext
+    {
+        public EmployeeContext() : base("ProjectConnection")
         {
-        public EmployeeContext():base("SampleConnection")
-        {
-
         }
-            public DbSet<Employee> employees { get; set; }
-        }
-  
+        public DbSet<Employee> Employees { get; set; }
+    }
 }

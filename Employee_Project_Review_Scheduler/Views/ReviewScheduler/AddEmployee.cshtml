@@ -1,15 +1,14 @@
-﻿@model EmployeeEntity.Employee
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
 
-@{
-    ViewBag.Title = "AddEmployee";
-}
 @Html.Partial("PartialView");
 @using (Html.BeginForm("AddEmployee", "ReviewScheduler", FormMethod.Post))
 {
+
+    @Html.AntiForgeryToken()
     <table cellpadding="8">
         <tr>
             <td>
-                @Html.Label("Firstname")
+                @Html.LabelFor(model => model.Firstname)
 
             </td>
             <td>
@@ -20,7 +19,7 @@
         </tr>
         <tr>
             <td>
-                @Html.Label("Lastname")
+                @Html.LabelFor(model => model.Lastname)
 
             </td>
             <td>
@@ -28,21 +27,10 @@
                 @Html.ValidationMessageFor(model => model.Lastname)
 
             </td>
-        </tr>
+        
         <tr>
             <td>
-                @Html.Label("Id")
-
-            </td>
-            <td>
-                @Html.EditorFor(model => model.Id)
-                @Html.ValidationMessageFor(model => model.Id)
-            </td>
-
-        </tr>
-        <tr>
-            <td>
-                @Html.Label("EmailId")
+                @Html.LabelFor(model => model.EmailId)
 
             </td>
             <td>
@@ -53,18 +41,23 @@
         </tr>
         <tr>
             <td>
-                @Html.Label("Gender")
+                @Html.LabelFor(model => model.Gender)
             </td>
             <td>
                 Male
                 @Html.RadioButtonFor(model => model.Gender, "Male")
                 Female
                 @Html.RadioButtonFor(model => model.Gender, "Female")
+                 &nbsp; &nbsp; &nbsp;
+                @Html.ValidationMessageFor(model => model.Gender)
             </td>
+        
+              
+            
         </tr>
         <tr>
             <td>
-                @Html.Label("MobileNumber")
+                @Html.LabelFor(model => model.Mobilenumber)
 
             </td>
             <td>
@@ -74,7 +67,7 @@
         </tr>
         <tr>
             <td>
-                @Html.Label("DOB")
+                @Html.LabelFor(model => model.DOB)
             </td>
             <td>
                 @Html.EditorFor(model => model.DOB)
@@ -83,7 +76,7 @@
         </tr>
         <tr>
             <td>
-                @Html.Label("DOJ")
+                @Html.LabelFor(model => model.DOJ)
 
             </td>
             <td>
@@ -92,7 +85,7 @@
             </td>
         <tr>
             <td>
-                @Html.Label("Username")
+                @Html.LabelFor(model => model.Username)
 
             </td>
             <td>
@@ -101,7 +94,7 @@
             </td>
         <tr>
             <td>
-                @Html.Label("Password")
+                @Html.LabelFor(model => model.Password)
 
             </td>
             <td>
@@ -111,7 +104,7 @@
         </tr>
         <tr>
             <td>
-                @Html.Label("Conform Password")
+                @Html.LabelFor(model => model.ConformPassword)
 
             </td>
             <td>
@@ -121,7 +114,7 @@
         </tr>
         <tr>
             <td>
-                @Html.Label("Designation")
+                @Html.LabelFor(model => model.Designation)
 
             </td>
             <td>
@@ -137,5 +130,6 @@
 
     </table>
 }
+
 
 
