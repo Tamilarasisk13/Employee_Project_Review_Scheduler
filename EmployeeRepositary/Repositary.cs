@@ -1,5 +1,4 @@
-﻿using System;
-using EmployeeEntity;
+﻿using EmployeeEntity;
 using System.Collections.Generic;
 using System.Linq;
 namespace EmployeeRepositary

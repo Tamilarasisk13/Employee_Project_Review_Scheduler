@@ -51,20 +51,7 @@ namespace EmployeeEntity
             }
         }
 
-        //public Employee(string firstName, string lastName, int id, string emailId, string gender, long mobileNumber, DateTime dob, DateTime doj,string userName, string password, Designation designation )
-        //{
-        //    this.firstName = firstName;
-        //    this.lastName = lastName;
-        //    this.id = id;
-        //    this.emailId = emailId;
-        //    this.gender = gender;
-        //    this.mobileNumber = mobileNumber;
-        //    this.dob = dob;
-        //    this.doj = doj;
-        //    this.userName = userName;
-        //    this.password = password;
-        //    this.designation = designation;
-        //}
+        
     }
 }
 
