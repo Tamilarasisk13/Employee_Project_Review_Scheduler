@@ -18,17 +18,18 @@ namespace ReviewShedulerBL
         {
             repositary.GetEmployees();
         }
-       public bool CheckLogin(string username, string password)
+       public string CheckLogin(LoginUser loginUser)
         {
-            return repositary.CheckLogin(username, password);
+            return repositary.CheckLogin(loginUser);
         }
+       
         public void Delete(int employeeId)
         {
             repositary.Delete(employeeId);
         }
         public Employee GetEmployeeById(int id)
         {
-            return GetEmployeeById(id);
+            return repositary.GetEmployeeById(id);
         }
     }
 }

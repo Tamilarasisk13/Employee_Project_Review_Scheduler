@@ -6,17 +6,16 @@ using EmployeeRepositary;
 using System.Linq;
 using System;
 using Employee_Project_Review_Scheduler.Models;
-using System.Text;
-using System.Web;
+using System.Net;
+using System.Data.Entity;
 
 namespace Employee_Project_Review_Scheduler.Controllers
 {
-    //[HandleError]
+    [HandleError]
     public class ReviewSchedulerController : Controller
     {
         Repositary repositary = new Repositary();
-        EmployeeBL bl = new EmployeeBL();
-        // GET: ReviewScheduler 
+        EmployeeBL employeeBL = new EmployeeBL();
         [ActionName("Start")]
         public ViewResult Index()
         {
@@ -28,56 +27,19 @@ namespace Employee_Project_Review_Scheduler.Controllers
         //{
         //    return bl.Count();
         //}
-        public ViewResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Login(string username, string password)
-        {
-
-            if (ModelState.IsValid)
-            {
-                bool result = bl.CheckLogin(username, password);
-                if (result == true)
-                {
-                    Response.Write("Login Successfully");
-                    return View("Index");
-                }
-                else
-                {
-                    Response.Write("username or password is Invalid");
-                    return RedirectToAction("Login");
-                }
-            }
-            else
-                return View("Index");
-        }
-        public ViewResult Display()
-        {
-            IEnumerable<EmployeeEntity.Employee> employees = Repositary.GetEmployee();
-            ViewData["Employees"] = employees;
-            return View();
-        }
+        
+        //Add Method
         public ViewResult AddEmployee()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
+        [OutputCache(Duration = 10)]
         public ActionResult AddEmployee(EmployeeViewModel employeeViewModel)
         {
             Employee employee = new Employee();
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append(HttpUtility.HtmlEncode(employeeViewModel.Firstname));
-            //sb.Replace("&lt;b&gt;", "<b>");
-            //sb.Replace("&lt;/b&gt;", "<b>");
-            //sb.Replace("</b>", "</b>";)
-            //employee.Description = sb.ToString();
-
-            //string strDes = HttpUtility.HtmlEncode(employee.Description);
-            //employee.Description = strDes;
+           
             try
             {
 
@@ -96,7 +58,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
                     employee.ConformPassword = employeeViewModel.ConformPassword;
                     employee.Designation = (EmployeeEntity.Designation)employeeViewModel.Designation;
                     //bl.GetEmployees();
-                    bl.Add(employee);
+                    employeeBL.Add(employee);
                     Response.Write("Added Successfully");
                     return RedirectToAction("Display");
                 }
@@ -106,23 +68,35 @@ namespace Employee_Project_Review_Scheduler.Controllers
             {
                 Response.Write(e.Message + e.StackTrace);
                 return RedirectToAction("Index");
-            }
-            //return View();
+            }          
         }
-        public ActionResult Delete(int employee)
+        //Get values from database
+        public ActionResult Display()
         {
-            bl.GetEmployees();
-            bl.Delete(employee);
-            TempData["Message"] = "Employee is deleted successfully";
-            return RedirectToAction("Index");
+            
+            EmployeeContext context = new EmployeeContext();
+            TempData["Employees"] = context.Employees.ToList();
+            return View();            
+        }   
+        //Method to delete a row   
+        public RedirectToRouteResult Delete(int id)
+        {
+            EmployeeContext context = new EmployeeContext();
+            Employee employee = context.Employees.Find(id);
+            context.Employees.Remove(employee);
+            context.SaveChanges();
+            return RedirectToAction("Display");           
         }
-        public ActionResult Edit(int id)
+        //Get Method to edit the data
+        public ViewResult Edit(int id)
         {
-            EmployeeEntity.Employee employee = bl.GetEmployeeById(id);
+            Employee employee = employeeBL.GetEmployeeById(id);
             return View(employee);
+
         }
+        //Post Method to edit the data
         [HttpPost]
-        public ActionResult Update(EmployeeEntity.Employee employee)
+        public RedirectToRouteResult Update(Employee employee)
         {
             if (ModelState.IsValid)
             {

@@ -153,11 +153,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReviewSchedulerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,13 +172,13 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\ReviewScheduler\Display.cshtml" />
     <Content Include="Views\ReviewScheduler\Index.cshtml" />
     <Content Include="Views\Shared\PartialView.cshtml" />
     <Content Include="Views\ReviewScheduler\AddEmployee.cshtml" />
     <Content Include="Views\ReviewScheduler\Edit.cshtml" />
-    <Content Include="Views\ReviewScheduler\Login.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Login\LoginAction.cshtml" />
+    <Content Include="Views\ReviewScheduler\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

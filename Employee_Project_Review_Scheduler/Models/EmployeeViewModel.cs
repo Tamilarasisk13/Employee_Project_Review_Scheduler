@@ -6,13 +6,9 @@ namespace Employee_Project_Review_Scheduler.Models
 {
     public enum Designation
     {
-        HR,
         Scheduler,
-        CEO,
         Reviewer,
         Reviewee,
-        Tester,
-        Developer
     }
     public class EmployeeViewModel
     {
@@ -28,8 +24,6 @@ namespace Employee_Project_Review_Scheduler.Models
         public string Lastname { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity), Key()]
-        //[Required(ErrorMessage = "Id is required")]
-        //[Range(1, 99999)]  
         public int Id { get; set; }
 
 
@@ -69,7 +63,6 @@ namespace Employee_Project_Review_Scheduler.Models
         [MaxLength(15)]
         [Compare("Password", ErrorMessage = "The passwords do not match.")]
         public string ConformPassword { get; set; }
-
 
         public Designation Designation { get; set; }
     }

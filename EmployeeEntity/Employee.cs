@@ -5,22 +5,19 @@ namespace EmployeeEntity
 {
     public enum Designation
     {
-        HR,
         Scheduler,
-        CEO,
         Reviewer,
         Reviewee,
-        Tester,
-        Developer
+
     }
     public class Employee 
     {
         [Key]
         public int Id { get; set; }
+
         public string Firstname { get; set; }
        
-        public string Lastname { get; set; }
-     
+        public string Lastname { get; set; }     
   
         public string EmailId { get; set; }
         
@@ -36,10 +33,23 @@ namespace EmployeeEntity
       
         public string Password { get; set; }
 
-
         public string ConformPassword { get; set; }
 
         public Designation Designation { get; set; }
+
+        public string employeeRole = "User";
+
+        public string role
+        {
+            get
+            {
+                return employeeRole;
+            }
+            set
+            {
+                value = employeeRole;
+            }
+        }
 
         //public Employee(string firstName, string lastName, int id, string emailId, string gender, long mobileNumber, DateTime dob, DateTime doj,string userName, string password, Designation designation )
         //{

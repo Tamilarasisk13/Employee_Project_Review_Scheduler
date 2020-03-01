@@ -1,27 +1,30 @@
-﻿@model Employee_Project_Review_Scheduler.Models.Employee
+﻿@model Employee_Project_Review_Scheduler.Models.LoginViewModel
 
+@{
+    ViewBag.Title = "LoginAction";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
 
-<h2>Login Page</h2>
-@Html.Partial("PartialView");
+<h2>LoginAction</h2>
 
-@using (Html.BeginForm("Login", "ReviewScheduler", FormMethod.Post))
+@using (Html.BeginForm("LoginAction", "Login", FormMethod.Post))
 {
     <table cellpadding="8">
         <tr>
             <td>
-                @Html.Label("Username")
+                @Html.LabelFor(model => model.Username)
             </td>
             <td>
-                @Html.TextBox("Username")
+                @Html.TextBoxFor(model => model.Username)
                 @Html.ValidationMessageFor(model => model.Username)
             </td>
         </tr>
         <tr>
             <td>
-                @Html.Label("Password")
+                @Html.LabelFor(model => model.Password)
             </td>
             <td>
-                @Html.Password("Password")
+                @Html.PasswordFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
             </td>
         </tr>
@@ -33,7 +36,4 @@
         </tr>
     </table>
 }
-
-
-
 
