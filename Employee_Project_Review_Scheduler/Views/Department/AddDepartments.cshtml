@@ -1,0 +1,35 @@
+﻿@model Employee_Project_Review_Scheduler.Models.DepartmentViewModel
+
+@{
+    ViewBag.Title = "AddDepartments";
+    
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>AddDepartments</h2>
+
+@using (Html.BeginForm("AddDepartments", "Department", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table cellpadding="8">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DepartmentName)
+
+            </td>
+            <td>
+                @Html.EditorFor(model => model.DepartmentName)
+                @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @maxlength = "40", @style = "color:red" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="Submit" />
+
+            </td>
+        </tr>
+
+
+    </table>
+}

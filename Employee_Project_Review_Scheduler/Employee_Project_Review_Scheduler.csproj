@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -86,6 +90,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,9 +135,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\LapImage.jpg" />
+    <Content Include="Images\Screenshot %2857%29.png" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -148,18 +155,31 @@
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="StyleSheet\DesignPage.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\_EmployeeMasterPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\EmployeeDetailsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ReviewSchedulerController.cs" />
+    <Compile Include="Controllers\ReviewScheduleController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="CustomExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DepartmentViewModel.cs" />
+    <Compile Include="Models\DesignationViewModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MapConfig.cs" />
+    <Compile Include="Models\ScheduleReviewViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,13 +192,22 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\ReviewScheduler\Index.cshtml" />
     <Content Include="Views\Shared\PartialView.cshtml" />
-    <Content Include="Views\ReviewScheduler\AddEmployee.cshtml" />
-    <Content Include="Views\ReviewScheduler\Edit.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Login\LoginAction.cshtml" />
-    <Content Include="Views\ReviewScheduler\Display.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Department\DisplayDepartments.cshtml" />
+    <Content Include="Views\Designation\DisplayDesignations.cshtml" />
+    <Content Include="Views\Designation\AddDesignations.cshtml" />
+    <Content Include="Views\Department\AddDepartments.cshtml" />
+    <Content Include="Views\ReviewSchedule\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\EmployeeDetails\AddEmployee.cshtml" />
+    <Content Include="Views\EmployeeDetails\DisplayAccountDetails.cshtml" />
+    <Content Include="Views\EmployeeDetails\DisplayEmployeeDetails.cshtml" />
+    <Content Include="Views\EmployeeDetails\Edit.cshtml" />
+    <Content Include="Views\EmployeeDetails\ExistsEmployee.cshtml" />
+    <Content Include="Views\EmployeeDetails\Index.cshtml" />
+    <Content Include="Views\EmployeeDetails\ViewMyProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -188,19 +217,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmployeeBL\ReviewSchedulerBL.csproj">
       <Project>{673688d1-8fef-4af9-8f33-4cff85ce37ed}</Project>
       <Name>ReviewSchedulerBL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EmployeeCommon\EmployeeCommon.csproj">
+      <Project>{cd8489e3-450d-4c12-9df5-d7b3b1403263}</Project>
+      <Name>EmployeeCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EmployeeEntity\EmployeeEntity.csproj">
       <Project>{8c8fdca6-ce3d-460e-9f16-6ca4d88e2f43}</Project>
       <Name>EmployeeEntity</Name>
     </ProjectReference>
     <ProjectReference Include="..\EmployeeRepositary\EmployeeDAL.csproj">
-      <Project>{034b2c7b-f599-49a2-b1d3-17ec5d106dcd}</Project>
+      <Project>{034B2C7B-F599-49A2-B1D3-17EC5D106DCD}</Project>
       <Name>EmployeeDAL</Name>
     </ProjectReference>
   </ItemGroup>

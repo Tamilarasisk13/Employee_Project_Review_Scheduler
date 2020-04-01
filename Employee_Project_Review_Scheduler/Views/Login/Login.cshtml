@@ -1,0 +1,40 @@
+﻿@model Employee_Project_Review_Scheduler.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>Login Page</h2>
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table cellpadding="8" class="login">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Username ,null, new { @class="label" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Username)
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password, null, new { @class = "label" })
+            </td>
+            <td>
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="Submit" class="submitbtn"/>
+
+            </td>
+        </tr>
+    </table>
+}
+

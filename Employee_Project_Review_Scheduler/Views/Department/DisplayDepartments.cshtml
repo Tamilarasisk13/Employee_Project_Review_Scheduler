@@ -1,0 +1,27 @@
+﻿@model Employee_Project_Review_Scheduler.Models.DepartmentViewModel
+
+@{
+    ViewBag.Title = "DisplayDepartments";
+    
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>DisplayDepartments</h2>
+
+
+<table border="0" align="center">
+    <tr>
+        <th  class="tbtitle">DepartmentId</th>
+        <th  class="tbtitle">Department Name</th>
+    </tr>
+    @foreach (var account in (List<EmployeeEntity.Departments>)TempData["Departments"])
+            {
+        <tr>
+            <td  align="center">@account.DepartmentId</td>
+            <td  align="center">@account.DepartmentName</td>
+            <td  align="center">@Html.ActionLink("Delete", "DeleteDepartments", new { id = account.DepartmentId }, new { onclick = "return confirm('Are you want to delete?');" })  </td>
+        </tr>
+    }
+    @Html.ActionLink("AddDepartment", "AddDepartments", null, new { @class = "Addcenter" })
+</table>
+

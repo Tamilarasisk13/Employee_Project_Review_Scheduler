@@ -1,0 +1,54 @@
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "DisplayEmployeeDetails";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+
+<h2>DisplayEmployeeDetails</h2>
+
+<table border="0">
+    <tr>
+        <th class="tbtitle">FirstName</th>
+        <th class="tbtitle">Lastname</th>
+        <th class="tbtitle">EmployeeId</th>
+        <th class="tbtitle">EmailId</th>
+        <th class="tbtitle">Gender</th>
+        <th class="tbtitle">Mobile number</th>
+        <th class="tbtitle">DOB</th>
+        <th class="tbtitle">DOJ</th>
+        <th class="tbtitle">DepartmentName</th>
+        <th class="tbtitle">DesignationName</th>
+        <th class="tbtitle">AccountId</th>
+    </tr>
+    @foreach (EmployeeEntity.Employee employee in (IEnumerable<EmployeeEntity.Employee>)TempData["Employees"])
+            {
+        <tr>
+            <td align="center">@employee.Firstname</td>
+            <td align="center">@employee.Lastname</td>
+            <td align="center">@employee.Id</td>
+            <td align="center">@employee.EmailId</td>
+            <td align="center">@employee.Gender</td>
+            <td align="center">@employee.Mobilenumber</td>
+            <td align="center">@employee.DOB</td>
+            <td align="center">@employee.DOJ</td>
+            <td align="center">@employee.Department.DepartmentName</td>
+            <td align="center">@employee.Designation.DesignationName</td>
+            <td align="center">@employee.AccountId</td>
+            <td align="center">@Html.ActionLink("Edit", "Edit", new { id = employee.Id }) </td>
+            <td align="center">@Html.ActionLink("Delete", "Delete", new { id = employee.Id }, new { onclick = "return confirm('Are you want to delete?');" }) </td>
+        </tr>
+    }
+
+</table><br />
+@Html.ActionLink("AddEmployee", "AddEmployee", null, new { @class = "Addbtn" })
+
+
+
+
+
+
+
+
+

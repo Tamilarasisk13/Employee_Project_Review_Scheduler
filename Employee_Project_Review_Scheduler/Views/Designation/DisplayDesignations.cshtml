@@ -1,0 +1,27 @@
+﻿@model Employee_Project_Review_Scheduler.Models.DesignationViewModel
+
+@{
+    ViewBag.Title = "DisplayDesignations";
+    
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>DisplayDesignations</h2>
+
+<table border="0" align="center">
+    <tr>
+
+        <th class="tbtitle">DesignationId</th>
+        <th class="tbtitle">Designation Name</th>
+    </tr>
+    @foreach (var account in (List<EmployeeEntity.Designations>)TempData["Designations"])
+            {
+        <tr>
+            <td  align="center">@account.DesignationId</td>
+            <td  align="center">@account.DesignationName</td>
+
+            <td>@Html.ActionLink("Delete", "DeleteDesignations", new { id = account.DesignationId }, new { onclick = "return confirm('Are you want to delete?');" })  </td>
+        </tr>
+    }
+    @Html.ActionLink("AddDesignation", "AddDesignations", null, new { @class = "Addcenter" })
+</table>

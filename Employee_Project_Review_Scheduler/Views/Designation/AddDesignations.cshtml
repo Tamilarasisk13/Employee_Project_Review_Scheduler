@@ -1,0 +1,34 @@
+﻿@model Employee_Project_Review_Scheduler.Models.DesignationViewModel
+
+@{
+    ViewBag.Title = "AddDesignations";
+  
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>AddDesignations</h2>
+
+@using (Html.BeginForm("AddDesignations", "Designation", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table cellpadding="8">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DesignationName)
+
+            </td>
+            <td>
+                @Html.EditorFor(model => model.DesignationName)
+                @Html.ValidationMessageFor(model => model.DesignationName, "", new { @maxlength = "40", @style = "color:red" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="Submit" />
+
+            </td>
+
+    </table>
+}
+

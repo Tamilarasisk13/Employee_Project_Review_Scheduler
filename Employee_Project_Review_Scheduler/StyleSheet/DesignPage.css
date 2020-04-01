@@ -1,0 +1,102 @@
+﻿
+.BackgroundImage {
+    background-size: cover;
+    background-image: url(../Images/LapImage.jpg);
+    background-repeat: no-repeat;
+}
+.Homebtn{
+padding-left:150px;
+}
+.Logoffbtn{
+    padding-left:180px;
+}
+.heading {
+    padding-left:25px;
+    /*padding-bottom:10px;*/
+    color: blueviolet;
+    font-size: 130%;
+    font-weight: bolder;
+}
+
+.firsttabs {
+    padding-left: 240PX;
+    padding-top: 50PX;
+    float: right;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Comic Sans MS';
+    color: cornflowerblue;
+}
+
+.usertabs {
+    padding-left: 80PX;
+    padding-top: 90PX;
+    float: right;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Comic Sans MS';
+    color: cornflowerblue;
+}
+
+.display {
+    padding-top: 50px;
+    color: darkcyan;
+    text-align: center;
+    font-size: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.label {
+    font-size: 20px;
+    color: darkblue;
+}
+
+.login {
+    padding-left: 550px;
+    padding-top: 140px;
+}
+
+.Addbtn {
+    font-size: 25px;
+    color: red;
+}
+
+.Addcenter {
+    font-size: 25px;
+    color: red;
+    padding-left: 680px;
+}
+
+.submitbtn {
+    font-size: 20px;
+    color: firebrick;
+}
+
+.tbtitle {
+    font-size: 20px;
+    color: brown;
+    font-weight: bold;
+}
+
+.warningmsg {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.textbox {
+    width: 100%;
+}
+
+.Edit {
+    color: red;
+}
+
+.aspireimage {
+    width: 200px;
+    height: 75px;
+    padding-top: 20px;
+}

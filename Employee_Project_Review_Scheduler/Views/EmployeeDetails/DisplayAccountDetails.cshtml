@@ -1,0 +1,44 @@
+﻿@model Employee_Project_Review_Scheduler.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "DisplayAccountDetails";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+
+<h2>DisplayAccountDetails</h2>
+
+
+<table border="0" align="center">
+    <tr>
+        <th class="tbtitle">AccountId</th>
+        <th class="tbtitle">Username</th>
+        <th class="tbtitle">Password</th>
+        <th class="tbtitle">Role</th>
+    </tr>
+    @foreach (var account in (List<EmployeeEntity.AccountDetails>)TempData["Accounts"])
+            {
+        <tr>
+            <td align="center">@account.AccountId</td>
+            <td align="center">@account.Username</td>
+            <td align="center">@account.Password</td>
+            <td align="center">@account.Role</td>
+            @*<td align="center">@Html.ActionLink("Edit", "EditAccount", new { id = account.AccountId }) </td>*@
+
+        </tr>
+    }
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+

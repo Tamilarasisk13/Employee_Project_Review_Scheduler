@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -45,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,17 +58,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentRepositary.cs" />
+    <Compile Include="DesignationRepositary.cs" />
     <Compile Include="EmployeeContext.cs" />
-    <Compile Include="Migrations\202002270631114_InitialCreate.cs" />
-    <Compile Include="Migrations\202002270631114_InitialCreate.designer.cs">
-      <DependentUpon>202002270631114_InitialCreate.cs</DependentUpon>
+    <Compile Include="IDepartmentRepositary.cs" />
+    <Compile Include="IDesignationRepositary.cs" />
+    <Compile Include="IEmployeeRepositary.cs" />
+    <Compile Include="EmployeesRepositary.cs" />
+    <Compile Include="Migrations\202003111238469_InitialCreate.cs" />
+    <Compile Include="Migrations\202003111238469_InitialCreate.designer.cs">
+      <DependentUpon>202003111238469_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002290538011_role.cs" />
-    <Compile Include="Migrations\202002290538011_role.designer.cs">
-      <DependentUpon>202002290538011_role.cs</DependentUpon>
+    <Compile Include="Migrations\202003120106099_is.cs" />
+    <Compile Include="Migrations\202003120106099_is.designer.cs">
+      <DependentUpon>202003120106099_is.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003120538067_spall.cs" />
+    <Compile Include="Migrations\202003120538067_spall.designer.cs">
+      <DependentUpon>202003120538067_spall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003120912491_spallh.cs" />
+    <Compile Include="Migrations\202003120912491_spallh.designer.cs">
+      <DependentUpon>202003120912491_spallh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003280450035_log.cs" />
+    <Compile Include="Migrations\202003280450035_log.designer.cs">
+      <DependentUpon>202003280450035_log.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repositary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,11 +99,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002270631114_InitialCreate.resx">
-      <DependentUpon>202002270631114_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003111238469_InitialCreate.resx">
+      <DependentUpon>202003111238469_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002290538011_role.resx">
-      <DependentUpon>202002290538011_role.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003120106099_is.resx">
+      <DependentUpon>202003120106099_is.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003120538067_spall.resx">
+      <DependentUpon>202003120538067_spall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003120912491_spallh.resx">
+      <DependentUpon>202003120912491_spallh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003280450035_log.resx">
+      <DependentUpon>202003280450035_log.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

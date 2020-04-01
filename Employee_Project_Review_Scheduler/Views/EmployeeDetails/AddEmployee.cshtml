@@ -1,0 +1,117 @@
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>AddEmployee</h2>
+@using (Html.BeginForm("AddEmployee", "EmployeeDetails", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table cellpadding="6" align="center">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Firstname, null, new { @class = "label" })
+
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Firstname, "", new { @maxlength = "30", @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "warningmsg" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Lastname, null, new { @class = "label" })
+
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Lastname, "", new { @maxlength = "30", @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "warningmsg" })
+
+            </td>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.EmailId, null, new { @class = "label" })
+
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.EmailId, "", new { @maxlength = "60", @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "warningmsg" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Gender, null, new { @class = "label" })
+            </td>
+            <td>
+                Male
+                @Html.RadioButtonFor(model => model.Gender, "Male")
+                Female
+                @Html.RadioButtonFor(model => model.Gender, "Female")
+                &nbsp; &nbsp; &nbsp;
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Mobilenumber, null, new { @class = "label" })
+
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Mobilenumber, "", new { @maxlength = "10", @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.Mobilenumber, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DOB, null, new { @class = "label" })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.DOB)
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DOJ, null, new { @class = "label" })
+
+            </td>
+            <td>
+                @Html.EditorFor(model => model.DOJ)
+                @Html.ValidationMessageFor(model => model.DOJ, "", new { @class = "warningmsg" })
+            </td>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Department, null, new { @class = "label" })
+
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.DepartmentId, (IEnumerable<SelectListItem>)ViewBag.Departments, "Select Department")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Designation, null, new { @class = "label" })
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.DesignationId, (IEnumerable<SelectListItem>)ViewBag.Designation, "Select Designation")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="Submit" class="submitbtn" />
+
+            </td>
+        </tr>
+
+    </table>
+}
+<td>

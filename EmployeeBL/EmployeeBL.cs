@@ -1,35 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using EmployeeDAL;
 using EmployeeEntity;
-using EmployeeRepositary;
-namespace ReviewShedulerBL
+
+namespace ReviewSchedulerBL
 {
-    public class EmployeeBL
+    public class EmployeeBL : IEmployeeBL
     {
-        Repositary repositary = new Repositary();
-        public void Add(Employee employee)
+        IEmployeeRepositary employeeRepositary;
+        public EmployeeBL()
         {
-            repositary.Add(employee);
+             employeeRepositary = new EmployeesRepositary();
         }
-       public void GetEmployees()
+        //Method to add employee
+        public Employee Add(Employee employee)
         {
-            repositary.GetEmployees();
-        }
-       public string CheckLogin(LoginUser loginUser)
+           return employeeRepositary.Add(employee);
+        }      
+
+        //Method to generate random password
+        public string GeneratePassword(string emailId,string MobileNumber)
         {
-            return repositary.CheckLogin(loginUser);
+            return emailId.Substring(0,3)+MobileNumber.Substring(MobileNumber.Length-4);
         }
-       
+
+        //Method to check the user while login
+       public AccountDetails CheckLogin(AccountDetails accountDetails)
+        {
+            return employeeRepositary.CheckLogin(accountDetails);
+        }
+
+        //Method to check already exists or not
+        public bool CheckExists(string EmailId, long Mobilenumber)
+        {
+            return employeeRepositary.CheckExists(EmailId, Mobilenumber);
+        }
+
+        //Method to display employee details
+        public IEnumerable<Employee> DisplayEmployeeDetails()
+        {
+            return employeeRepositary.DisplayEmployeeDetails();           
+        }
+
+        //Method to get account details
+        public IEnumerable<AccountDetails> DisplayAccountDetails()
+        {
+            return employeeRepositary.DisplayAccountDetails();
+        }
+
+        //Method to delete employee details
         public void Delete(int employeeId)
         {
-            repositary.Delete(employeeId);
+            employeeRepositary.Delete(employeeId);
         }
+
+        //Method to add account details
+        public AccountDetails AddAccountDetails(AccountDetails accountDetails)
+        {
+            return employeeRepositary.AddAccountDetails(accountDetails);
+
+        }
+
+        //Method to get employee by employeeId
         public Employee GetEmployeeById(int id)
         {
-            return repositary.GetEmployeeById(id);
+            return employeeRepositary.GetEmployeeById(id);
+        }
+
+        //Method to  Get Employee By AccountId
+        public Employee GetEmployeeByAccountId(int id)
+        {
+            return employeeRepositary.GetEmployeeByAccountId(id);
+        }
+
+        //Method to update employee details
+        public bool UpdateEmployee(Employee employee)
+        {
+            return employeeRepositary.UpdateEmployee(employee);
         }
     }
 }

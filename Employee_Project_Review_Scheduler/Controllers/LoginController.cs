@@ -1,51 +1,72 @@
 ﻿using Employee_Project_Review_Scheduler.Models;
 using EmployeeEntity;
-using ReviewShedulerBL;
+using ReviewSchedulerBL;
+using System;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Employee_Project_Review_Scheduler.Controllers
 {
+    
+    [CustomExceptionFilter]  // Custom Exception filter
     public class LoginController : Controller
     {
-        EmployeeBL employeeBL = new EmployeeBL();
-        public ViewResult LoginAction()    //Get method to check login
+        EmployeeBL employeeBL;
+        public LoginController()
+        {
+            employeeBL = new EmployeeBL();
+        }
+
+        //Get method to login user
+        public ViewResult Login()
         {
             return View();
         }
-        [HttpPost]    //Post method to get login
-        public ActionResult LoginAction(LoginViewModel loginViewModel)
+
+        //Get method to login user
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Login(LoginViewModel loginViewModel)
         {
-            LoginUser loginUser = new LoginUser();
+            AccountDetails accountDetails = new AccountDetails();
             if (ModelState.IsValid)
             {
-                
-                loginUser.Username = loginViewModel.Username;
-                loginUser.Password = loginViewModel.Password;
-                string result = employeeBL.CheckLogin(loginUser);
-                if (result == "Admin")
+                accountDetails.Username = loginViewModel.Username;
+                accountDetails.Password = loginViewModel.Password;
+                AccountDetails account = employeeBL.CheckLogin(accountDetails);
+                if (account != null)
                 {
-                    return RedirectToAction("Display","ReviewScheduler");
+                    FormsAuthentication.SetAuthCookie(account.Username, false);
+                    var authticket = new FormsAuthenticationTicket(1, account.Username, DateTime.Now, DateTime.Now.AddMinutes(20), false, account.Role);
+                    string encryptedticket = FormsAuthentication.Encrypt(authticket);
+                    var authcookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedticket);
+                    HttpContext.Response.Cookies.Add(authcookie);
+                    Session["AccountId"] = account.AccountId;
+                    //Employee employeeDetails = employeeBL.GetEmployeeByAccountId(account.AccountId);
+                    //TempData["Employee"] = employeeDetails;
+                    return RedirectToAction("ViewMyProfile", "EmployeeDetails");
                 }
-                else if (result == "Scheduler")
-                {
-                    return RedirectToAction("Start", "ReviewScheduler");
-                }
-                else if (result == "Reviewer")
-                {
-                    return RedirectToAction("Start", "ReviewScheduler");
-                }
-                else if (result == "Reviewee")
-                {
-                    return RedirectToAction("Start", "ReviewScheduler");
-                }
+
                 else
                 {
+                    //ModelState.AddModelError("", "invalid login attempt.");
                     Response.Write("Username or password is Invalid");
                     return View();
                 }
+
+
+
             }
-            else
-                return View("Start", "ReviewScheduler");
+            return View();
+        }
+
+        //Logout method
+        public ActionResult LogOff()
+        {
+            Session.Clear();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "EmployeeDetails");
         }
     }
 }

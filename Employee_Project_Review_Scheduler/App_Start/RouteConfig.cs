@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Employee_Project_Review_Scheduler
@@ -16,7 +12,7 @@ namespace Employee_Project_Review_Scheduler
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ReviewScheduler", action = "Start", id = UrlParameter.Optional }
+                defaults: new { controller = "EmployeeDetails", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
