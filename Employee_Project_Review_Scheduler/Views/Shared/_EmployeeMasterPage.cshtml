@@ -10,15 +10,14 @@
 
     <div style="display:flex">
         <div>
-            <img src="~/Images/Screenshot (57).png" class="aspireimage" />
+            <img src="~/Images/Screenshot (57).png" class="aspireimage" />  
         </div>
         <div class="heading" style="color:blueviolet">
             <header><h1><i><b>Aspire Systems</b></i></h1></header>
         </div>
 
         <div class="firsttabs">
-
-            @Html.ActionLink("Home","Index", "EmployeeDetails")
+            @Html.ActionLink("Home", "Index", "EmployeeDetails")
             @if (HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
@@ -33,31 +32,30 @@
             @*Links viewed by Admin*@
             @if (HttpContext.Current.User.IsInRole(Common.Roles.Admin.ToString()))
             {
-
-                @Html.ActionLink("Employee Details", "DisplayEmployeeDetails", "EmployeeDetails")
-                @Html.ActionLink("Account Details", "DisplayAccountDetails", "EmployeeDetails") 
-                @Html.ActionLink("Department Details", "DisplayDepartments", "Department") 
-                @Html.ActionLink("Designation Details", "DisplayDesignations", "Designation")
-
+                @Html.ActionLink("My Profile", "UpdateProfile", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("Employee Details", "DisplayEmployeeDetails", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("Account Details", "DisplayAccountDetails", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("Department Details", "DisplayDepartments", "Department")<bnsp></bnsp>
+                @Html.ActionLink("Designation Details", "DisplayDesignations", "Designation")<bnsp></bnsp>
+                @Html.ActionLink("My Review", "Index", "User")
             }
 
             @*Links viewed by User*@
             @if (HttpContext.Current.User.IsInRole(Common.Roles.User.ToString()))
             {
-            
-                @Html.ActionLink("View Review Details", "Index", "ReviewSchedule")
-
+            @Html.ActionLink("My Profile", "UpdateProfile", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("My Review", "Index", "User")
+                
             }
 
             @*Links Viewed By Scheduler*@
             @if (HttpContext.Current.User.IsInRole(Common.Roles.Scheduler.ToString()))
-
             {
-                @Html.ActionLink("View Review Details", "Index", "ReviewSchedule")
-                @Html.ActionLink("Schedule Review", "Index", "ReviewSchedule")
-
+                @Html.ActionLink("My Profile", "UpdateProfile", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("View Review Details", "DisplayReviewDetails", "ReviewSchedule")<bnsp></bnsp>
+                @Html.ActionLink("Schedule Review", "ScheduleReview", "ReviewSchedule")<bnsp></bnsp>
+                @Html.ActionLink("My Review", "Index", "User")
             }
-
         </div>
     </div>
 

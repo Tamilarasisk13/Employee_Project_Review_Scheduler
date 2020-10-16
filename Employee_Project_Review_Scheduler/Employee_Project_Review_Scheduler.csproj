@@ -174,12 +174,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataTypeAttribute.cs" />
     <Compile Include="Models\DepartmentViewModel.cs" />
     <Compile Include="Models\DesignationViewModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\MapConfig.cs" />
-    <Compile Include="Models\ScheduleReviewViewModel.cs" />
+    <Compile Include="Models\RequiredAttribute.cs" />
+    <Compile Include="Models\ReviewDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +189,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
+    <Content Include="Views\ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
@@ -200,7 +202,6 @@
     <Content Include="Views\Designation\AddDesignations.cshtml" />
     <Content Include="Views\Department\AddDepartments.cshtml" />
     <Content Include="Views\ReviewSchedule\Index.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\EmployeeDetails\AddEmployee.cshtml" />
     <Content Include="Views\EmployeeDetails\DisplayAccountDetails.cshtml" />
     <Content Include="Views\EmployeeDetails\DisplayEmployeeDetails.cshtml" />
@@ -208,6 +209,19 @@
     <Content Include="Views\EmployeeDetails\ExistsEmployee.cshtml" />
     <Content Include="Views\EmployeeDetails\Index.cshtml" />
     <Content Include="Views\EmployeeDetails\ViewMyProfile.cshtml" />
+    <Content Include="Views\ReviewSchedule\ScheduleReview.cshtml" />
+    <Content Include="Views\ReviewSchedule\DisplayReviewDetails.cshtml" />
+    <Content Include="Views\ReviewSchedule\NoSchedule.cshtml" />
+    <Content Include="Views\Login\Edit.cshtml" />
+    <Content Include="Views\User\DisplayReviewerDetails.cshtml" />
+    <Content Include="Views\User\DisplayRevieweeDetails.cshtml" />
+    <Content Include="Views\EmployeeDetails\UpdateProfile.cshtml" />
+    <Content Include="Views\EmployeeDetails\UpdateMyProfile.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\ReviewSchedule\DisplayMessages.cshtml" />
+    <Content Include="Views\ReviewSchedule\Edit.cshtml" />
+    <Content Include="Views\User\DisplayBothDetails.cshtml" />
+    <Content Include="Views\Login\DisplayMessages.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

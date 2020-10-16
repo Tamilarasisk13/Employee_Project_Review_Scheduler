@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Employee_Project_Review_Scheduler.Controllers
 {
     
-    [CustomExceptionFilter]  // Custom Exception filter
+    //[CustomExceptionFilter]  // Custom Exception filter
     public class EmployeeDetailsController : Controller
     {
         IEmployeeBL employeeBL;
@@ -44,7 +44,6 @@ namespace Employee_Project_Review_Scheduler.Controllers
         public ActionResult AddEmployee(EmployeeViewModel employeeViewModel)
         {
             Employee employee = new Employee();
-           
                 if (ModelState.IsValid)
                 {
                     bool existsResult = employeeBL.CheckExists(employeeViewModel.EmailId, employeeViewModel.Mobilenumber);
@@ -54,7 +53,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
                         accountDetails.Username = employeeViewModel.EmailId;
                         //accountDetails.Id = id;
                         accountDetails.Password = employeeBL.GeneratePassword(employeeViewModel.EmailId, employeeViewModel.Mobilenumber.ToString());
-                        accountDetails.Role = "Scheduler";
+                        accountDetails.Role = "User";
                         AccountDetails account = employeeBL.AddAccountDetails(accountDetails);
                         Employee employees = AutoMapper.Mapper.Map<EmployeeViewModel, Employee>(employeeViewModel);
                         employees.AccountId = account.AccountId;
@@ -71,13 +70,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
                 return View();
             }
 
-        //[Authorize(Roles = "Admin")]
-        //public ViewResult ExistsEmployee()
-        //{
-        //    ViewBag.ExistsEmployee = "Employee is already exists";
-        //    return View();
-        //}
-
+     
         //Method to display employee details
         [Authorize(Roles = "Admin")]
         public ActionResult DisplayEmployeeDetails()
@@ -95,9 +88,9 @@ namespace Employee_Project_Review_Scheduler.Controllers
         //}
 
 
-        //Method to View Employee Profile
+
         [Authorize(Roles = "Admin,User,Scheduler")]
-        public ViewResult ViewMyProfile()
+        public ActionResult UpdateProfile()
         {
             int UserAccountId = 0;
             if (Session["AccountId"] != null)
@@ -110,6 +103,20 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return View(employeeViewModel);
         }
 
+        [Authorize(Roles = "Admin,User,Scheduler")]
+        public ActionResult UpdateMyProfile(int id)
+        {
+            Employee employee = employeeBL.GetEmployeeById(id);
+            EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+            employeeViewModel = AutoMapper.Mapper.Map<Employee, EmployeeViewModel>(employee);
+            return View(employeeViewModel);
+        }
+        [HttpPost]
+        public ActionResult UpdateMyProfile(Employee employee)
+        {
+            employeeBL.UpdateEmployee(employee);
+            return RedirectToAction("UpdateProfile");
+        }
         //Method to display account details
         [Authorize(Roles = "Admin")]
         public ActionResult DisplayAccountDetails()
@@ -142,7 +149,6 @@ namespace Employee_Project_Review_Scheduler.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public RedirectToRouteResult Update(Employee employee)
-
         {
             employeeBL.UpdateEmployee(employee);
             return RedirectToAction("DisplayEmployeeDetails");

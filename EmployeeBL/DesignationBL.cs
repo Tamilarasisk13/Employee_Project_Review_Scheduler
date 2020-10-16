@@ -19,7 +19,7 @@ namespace ReviewSchedulerBL
         }
 
         //Method to get designation
-        public IEnumerable<Designations> GetDesignations()
+        public List<Designations> GetDesignations()
         {
             return designationRepositary.GetDesignations();
         }
@@ -28,6 +28,11 @@ namespace ReviewSchedulerBL
         public void DeleteDesignations(int designationId)
         {
             designationRepositary.DeleteDesignations(designationId);
+        }
+
+        public Designations GetDesignationByDesignationId(int designationId)
+        {
+            return designationRepositary.GetDesignationByDesignationId(designationId);
         }
     }
 }

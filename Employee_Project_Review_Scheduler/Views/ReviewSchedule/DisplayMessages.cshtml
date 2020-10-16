@@ -1,0 +1,18 @@
+﻿@model Employee_Project_Review_Scheduler.Models.ReviewDetailsViewModel
+
+@{
+    ViewBag.Title = "DisplayMessages";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>DisplayMessages</h2>
+@using (Html.BeginForm("ScheduleReview", "ReviewSchedule", FormMethod.Get))
+{
+<div style="font-size:200%">
+    @TempData["Message"]
+</div>
+<div>
+    @*@Html.ActionLink("Ok", "ScheduleReview", null, new { @class = "Addbtn" })*@
+    <input type="submit" value="ok" id="Submit" />
+</div>
+}

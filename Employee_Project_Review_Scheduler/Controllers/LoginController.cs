@@ -13,9 +13,13 @@ namespace Employee_Project_Review_Scheduler.Controllers
     public class LoginController : Controller
     {
         EmployeeBL employeeBL;
+        IDepartmentBL departmentBL;
+        IDesignationBL designationBL;
         public LoginController()
         {
             employeeBL = new EmployeeBL();
+            departmentBL = new DepartmentBL();
+            designationBL = new DesignationBL();
         }
 
         //Get method to login user
@@ -28,6 +32,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(LoginViewModel loginViewModel)
+
         {
             AccountDetails accountDetails = new AccountDetails();
             if (ModelState.IsValid)
@@ -45,7 +50,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
                     Session["AccountId"] = account.AccountId;
                     //Employee employeeDetails = employeeBL.GetEmployeeByAccountId(account.AccountId);
                     //TempData["Employee"] = employeeDetails;
-                    return RedirectToAction("ViewMyProfile", "EmployeeDetails");
+                    return RedirectToAction("UpdateProfile", "EmployeeDetails");
                 }
 
                 else
@@ -54,10 +59,35 @@ namespace Employee_Project_Review_Scheduler.Controllers
                     Response.Write("Username or password is Invalid");
                     return View();
                 }
-
-
-
             }
+            return View();
+        }
+        public ActionResult Edit()
+        {      
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Edit(LoginViewModel loginViewModel,string ConformPassword)
+        {
+           if(loginViewModel.Password!=ConformPassword)
+            {
+                TempData["Message"] = "Password and Conform password must match";
+                return RedirectToAction("DisplayMessages");
+            }
+            AccountDetails accountDetails = new AccountDetails();          
+            accountDetails.Username = loginViewModel.Username;
+            accountDetails.Password = loginViewModel.Password;
+            bool flag=employeeBL.UpdatePassword(accountDetails);
+            if(flag==true)
+            return RedirectToAction("Login");
+            TempData["Message"] = "Please enter valid username";
+            return RedirectToAction("DisplayMessages");
+        }
+
+        public ActionResult DisplayMessages()
+        {
             return View();
         }
 

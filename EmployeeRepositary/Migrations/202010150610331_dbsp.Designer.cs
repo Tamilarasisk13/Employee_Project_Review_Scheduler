@@ -7,13 +7,13 @@ namespace EmployeeRepositary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class log : IMigrationMetadata
+    public sealed partial class dbsp : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(log));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dbsp));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003280450035_log"; }
+            get { return "202010150610331_dbsp"; }
         }
         
         string IMigrationMetadata.Source

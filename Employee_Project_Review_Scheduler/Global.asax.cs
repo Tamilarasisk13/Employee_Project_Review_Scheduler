@@ -15,11 +15,10 @@ namespace Employee_Project_Review_Scheduler
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Models.MapConfig.Mapper();
-
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
-        {
+            {
             var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
             if (authCookie != null)
             {
@@ -32,14 +31,4 @@ namespace Employee_Project_Review_Scheduler
             }
         }
     }
-    //Filter applied at global level
-    //public class FilterConfig
-    //{
-    //    public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-    //    {
-    //        filters.Add(new CustomExceptionFilter());
-    //        filters.Add(new HandleErrorAttribute());
-    //    }
-    //}
-
 }

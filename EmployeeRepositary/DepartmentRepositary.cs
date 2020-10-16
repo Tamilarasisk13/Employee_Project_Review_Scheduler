@@ -10,7 +10,7 @@ namespace EmployeeDAL
     {
 
         //Method to get employee departments
-        public IEnumerable<Departments> GetDepartments()
+        public List<Departments> GetDepartments()
         {
             EmployeeContext employeeContext = new EmployeeContext();
             return employeeContext.EmployeeDepartments.ToList();

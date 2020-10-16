@@ -1,0 +1,60 @@
+﻿@model Employee_Project_Review_Scheduler.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Login", FormMethod.Post))
+{
+    <table cellpadding="8">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Username, null, new { @class = "label" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Username)
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password, null, new { @class = "label" })
+            </td>
+            <td  id="txtPassword">
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @*@Html.LabelFor(model => model.Password, null, new { @class = "label" })*@              
+                Conform Password
+            </td>
+            <td id="ConformPassword">
+                @Html.Password("ConformPassword")
+                @*@Html.ValidationMessageFor(model => model.ConformPassword, "", new { @class = "warningmsg" })*@
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="Submit" value="Submit" />
+            </td>
+        </tr>
+        </table>
+        @*<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("ConformPassword").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+        </script>*@
+}

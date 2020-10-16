@@ -7,13 +7,13 @@ namespace EmployeeRepositary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class _is : IMigrationMetadata
+    public sealed partial class dropsahas : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_is));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dropsahas));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003120106099_is"; }
+            get { return "202010150725372_dropsahas"; }
         }
         
         string IMigrationMetadata.Source

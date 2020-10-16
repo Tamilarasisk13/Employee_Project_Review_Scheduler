@@ -9,8 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "EmployeeDAL.EmployeeContext";
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(EmployeeDAL.EmployeeContext context)

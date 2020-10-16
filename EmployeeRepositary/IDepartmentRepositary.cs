@@ -10,7 +10,7 @@ namespace EmployeeDAL
    public interface IDepartmentRepositary
     {
         
-        IEnumerable<Departments> GetDepartments();
+        List<Departments> GetDepartments();
         bool AddDepartments(Departments departments);
         void DeleteDepartments(int departmentId);
         Departments GetEmployeeById(int departmentId);

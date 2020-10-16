@@ -16,5 +16,9 @@ namespace EmployeeDAL
         Employee GetEmployeeByAccountId(int id);
         AccountDetails GetAccountById(int userEmployeeId);
         AccountDetails AddAccountDetails(AccountDetails accountDetails);
+      List<Employee> GetEmployees();
+        bool UpdatePassword(AccountDetails accountDetails);
+        //Employee GetEmployeeByDepartmenIDAndDesignationID(int UserDepartmentId, int UserDesignationId);
+
     }
 }

@@ -17,6 +17,8 @@ namespace EmployeeEntity
         
         public string DepartmentName { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public  ICollection<Employee> Employees { get; set; }
+        public  ICollection<Review_Details> Review_Detail { get; set; }
+
     }
 }

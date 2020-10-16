@@ -15,7 +15,9 @@ namespace Employee_Project_Review_Scheduler.Models
                 config.CreateMap<LoginViewModel, AccountDetails>().ForMember(dest=>dest.Role,opt=>opt.MapFrom(src=>"Admin"));
                 config.CreateMap<EmployeeViewModel, Employee>();
                 config.CreateMap<Employee, EmployeeViewModel>();
-        });
+                //config.CreateMap<ReviewDetailsViewModel, ReviewDetail>();
+                //config.CreateMap<ReviewDetail, ReviewDetailsViewModel>();
+            });
         }
     }
 }

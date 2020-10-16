@@ -18,7 +18,7 @@ namespace ReviewSchedulerBL
         }
 
         //Method to get department
-        public IEnumerable<Departments> GetDepartments()
+        public List<Departments> GetDepartments()
         {
             return departmentRepositary.GetDepartments();
         }

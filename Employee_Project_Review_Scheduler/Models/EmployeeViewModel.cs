@@ -22,7 +22,6 @@ namespace Employee_Project_Review_Scheduler.Models
         [Required(ErrorMessage = "* EmailId is required")]
         [Index(IsUnique = true)]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
-
         public string EmailId { get; set; }
 
         [Required(ErrorMessage = "* Gender is required")]

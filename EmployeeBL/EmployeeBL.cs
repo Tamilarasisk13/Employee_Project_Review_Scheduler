@@ -77,5 +77,13 @@ namespace ReviewSchedulerBL
         {
             return employeeRepositary.UpdateEmployee(employee);
         }
+        public List<Employee> GetEmployees()
+        {
+            return employeeRepositary.GetEmployees();
+        }
+        public bool UpdatePassword(AccountDetails accountDetails)
+        {
+            return employeeRepositary.UpdatePassword(accountDetails);
+        }
     }
 }

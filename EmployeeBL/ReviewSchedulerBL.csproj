@@ -51,9 +51,15 @@
     <Compile Include="IDepartmentBL.cs" />
     <Compile Include="IDesignationBL.cs" />
     <Compile Include="IEmployeeBL.cs" />
+    <Compile Include="IReviewDetailsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewDetailsBL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeCommon\EmployeeCommon.csproj">
+      <Project>{cd8489e3-450d-4c12-9df5-d7b3b1403263}</Project>
+      <Name>EmployeeCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EmployeeEntity\EmployeeEntity.csproj">
       <Project>{8c8fdca6-ce3d-460e-9f16-6ca4d88e2f43}</Project>
       <Name>EmployeeEntity</Name>

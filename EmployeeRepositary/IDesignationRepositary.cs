@@ -10,9 +10,10 @@ namespace EmployeeDAL
    public interface IDesignationRepositary
     {
         
-        IEnumerable<Designations> GetDesignations();
+        List<Designations> GetDesignations();
         bool AddDesignations(Designations designations);
         void DeleteDesignations(int designationId);
         Designations GetEmployeeById(int designationId);
+        Designations GetDesignationByDesignationId(int designationId);
     }
 }

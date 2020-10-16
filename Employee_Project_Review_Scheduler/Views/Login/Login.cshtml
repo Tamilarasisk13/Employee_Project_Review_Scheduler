@@ -5,10 +5,15 @@
     Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
 }
 
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
 <h2>Login Page</h2>
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
+   
     @Html.AntiForgeryToken()
     <table cellpadding="8" class="login">
         <tr>
@@ -28,13 +33,16 @@
                 @Html.PasswordFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "warningmsg" })
             </td>
+        </tr>   
+        <tr>
+                 <td align="center">@Html.ActionLink("Forgot Password", "Edit") </td>
         </tr>
         <tr>
-            <td>
-                <input type="submit" id="Submit" class="submitbtn"/>
+                <td>
+                    <input type="submit" id="Submit" class="submitbtn"/>
 
-            </td>
-        </tr>
-    </table>
-}
+                </td>
+            </tr>
+        </table>
+    }
 

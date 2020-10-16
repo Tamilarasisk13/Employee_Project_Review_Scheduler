@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Contexts;
+using System;
 
 namespace EmployeeDAL
 {
@@ -30,19 +32,19 @@ namespace EmployeeDAL
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
 
-                SqlParameter sqlFirstname = new SqlParameter("@Firstname", employee.Firstname);
-                SqlParameter sqlLastname = new SqlParameter("@Lastname", employee.Lastname);
-                SqlParameter sqlEmailId = new SqlParameter("@EmailId", employee.EmailId);
-                SqlParameter sqlGender = new SqlParameter("@Gender", employee.Gender);
-                SqlParameter sqlMobilenumber = new SqlParameter("@Mobilenumber", employee.Mobilenumber);
-                SqlParameter sqlDOB = new SqlParameter("@DOB", employee.DOB);
-                SqlParameter sqlDOJ = new SqlParameter("@DOJ", employee.DOJ);
-                SqlParameter sqlDesignationId = new SqlParameter("@DesignationId", employee.DesignationId);
-                SqlParameter sqlDepartmentId = new SqlParameter("@DepartmentId", employee.DepartmentId);
-                SqlParameter sqlAccountId = new SqlParameter("@AccountId", employee.AccountId);
-                int count = employeeContext.Database.ExecuteSqlCommand("Employee_Insert @Firstname,@Lastname,@EmailId,@Gender,@Mobilenumber, @DOB, @DOJ, @DesignationId, @DepartmentId,@AccountId", sqlFirstname, sqlLastname, sqlEmailId, sqlGender, sqlMobilenumber, sqlDOB, sqlDOJ, sqlDesignationId, sqlDepartmentId, sqlAccountId);
-                //employeeContext.Entry(employee).State = EntityState.Added;
-                //employeeContext.SaveChanges();
+                //SqlParameter sqlFirstname = new SqlParameter("@Firstname", employee.Firstname);
+                //SqlParameter sqlLastname = new SqlParameter("@Lastname", employee.Lastname);
+                //SqlParameter sqlEmailId = new SqlParameter("@EmailId", employee.EmailId);
+                //SqlParameter sqlGender = new SqlParameter("@Gender", employee.Gender);
+                //SqlParameter sqlMobilenumber = new SqlParameter("@Mobilenumber", employee.Mobilenumber);
+                //SqlParameter sqlDOB = new SqlParameter("@DOB", employee.DOB);
+                //SqlParameter sqlDOJ = new SqlParameter("@DOJ", employee.DOJ);
+                //SqlParameter sqlDesignationId = new SqlParameter("@DesignationId", employee.DesignationId);
+                //SqlParameter sqlDepartmentId = new SqlParameter("@DepartmentId", employee.DepartmentId);
+                //SqlParameter sqlAccountId = new SqlParameter("@AccountId", employee.AccountId);
+                //int count = employeeContext.Database.ExecuteSqlCommand("Employee_Insert @Firstname,@Lastname,@EmailId,@Gender,@Mobilenumber, @DOB, @DOJ, @DesignationId, @DepartmentId,@AccountId", sqlFirstname, sqlLastname, sqlEmailId, sqlGender, sqlMobilenumber, sqlDOB, sqlDOJ, sqlDesignationId, sqlDepartmentId, sqlAccountId);
+                employeeContext.Entry(employee).State = EntityState.Added;
+                employeeContext.SaveChanges();
                 return employee;
 
             }
@@ -73,7 +75,7 @@ namespace EmployeeDAL
             Employee employee;
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
-                employee= employeeContext.Employees.FirstOrDefault(p => p.EmailId==EmailId || p.Mobilenumber==Mobilenumber);
+                employee = employeeContext.Employees.FirstOrDefault(p => p.EmailId == EmailId || p.Mobilenumber == Mobilenumber);
             }
             if (employee == null)
                 return true;
@@ -81,30 +83,13 @@ namespace EmployeeDAL
                 return false;
         }
 
-        //Method to check the use while login
-        //public AccountDetails CheckLogin(AccountDetails accountDetails)
-        //{
-        //    AccountDetails accountDetail;
-        //    using (EmployeeContext employeeContext = new EmployeeContext())
-        //    {
-        //        try
-        //        {
-        //            accountDetail = employeeContext.Account.FirstOrDefault(p => p.Username == accountDetails.Username && p.Password == accountDetails.Password);
 
-        //        }
-        //        catch
-        //        {
-        //            accountDetail = null;
-        //        }
-        //        return accountDetail;
-        //    }
-        //}
 
         public AccountDetails CheckLogin(AccountDetails accountDetails)
-        {          
+        {
             using (EmployeeContext employeeContext = new EmployeeContext())
-            {              
-                 return employeeContext.Account.FirstOrDefault(p => p.Username == accountDetails.Username && p.Password == accountDetails.Password);             
+            {
+                return employeeContext.Account.FirstOrDefault(p => p.Username == accountDetails.Username && p.Password == accountDetails.Password);
             }
         }
 
@@ -144,6 +129,7 @@ namespace EmployeeDAL
 
         }
 
+
         //Method to get account by AccountId
         public AccountDetails GetAccountById(int accountId)
         {
@@ -152,7 +138,11 @@ namespace EmployeeDAL
                 return employeeContext.Account.Find(accountId);
             }
         }
-
+        public List<Employee> GetEmployees()
+        {
+            EmployeeContext employeeContext = new EmployeeContext();
+            return employeeContext.Employees.ToList();
+        }
         //Method to update employee
         public bool UpdateEmployee(Employee employee)
         {
@@ -170,6 +160,28 @@ namespace EmployeeDAL
             //        return false;
             //    }
         }
-    }
+        //Attaching an entity of type 'EmployeeEntity.AccountDetails' failed because another entity of the same type already has the same primary key value.This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values.This may be because some entities are new and have not yet received database-generated key values.In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+        public bool UpdatePassword(AccountDetails accountDetails)
+        {
+            //int count = 0;
+            AccountDetails accountdetails;
+            using (EmployeeContext employeeContext = new EmployeeContext())
+            {
 
+                    accountdetails= employeeContext.Account.FirstOrDefault(p=>p.Username==accountDetails.Username);
+                if(accountdetails==null)
+                {
+                    return false;
+                }
+                    accountdetails.Password = accountDetails.Password;
+                    employeeContext.Entry(accountdetails).State = EntityState.Modified;
+                    employeeContext.SaveChanges();
+                    return true;
+             
+            }
+        }
+
+    }
 }
+
+

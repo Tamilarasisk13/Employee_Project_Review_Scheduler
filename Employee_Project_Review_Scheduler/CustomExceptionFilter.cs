@@ -6,7 +6,7 @@ using System.Web.Mvc;
 namespace Employee_Project_Review_Scheduler
 {
 
-    public class CustomExceptionFilter:FilterAttribute, IExceptionFilter
+    public class CustomExceptionFilter : FilterAttribute, IExceptionFilter
     {
         public void OnException(ExceptionContext filterContext)
         {

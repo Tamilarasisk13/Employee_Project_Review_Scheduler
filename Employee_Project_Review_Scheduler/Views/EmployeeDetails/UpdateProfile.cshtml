@@ -1,0 +1,54 @@
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "UpdateProfile";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>UpdateProfile</h2>
+<table border="0" align="center" cellpadding="6" style="padding-top:30px;">
+
+    <tr>
+        <td style="color:brown;font-size:20px;">Firstname</td>
+        <td style="font-size:20px;"> @Model.Firstname</td>
+
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">Lastname</td>
+        <td style="font-size:20px;">  @Model.Lastname </ td >
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">EmailId</td>
+        <td style="font-size:20px;">  @Model.EmailId</ td >
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">Gender</td>
+        <td style="font-size:20px;">@Model.Gender</td>
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">Mobilenumber</td>
+        <td style="font-size:20px;">@Model.Mobilenumber</td>
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">DOB</td>
+        <td style="font-size:20px;">@Model.DOB</td>
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">DOJ</td>
+        <td style="font-size:20px;">@Model.DOJ</td>
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">Department</td>
+        <td style="font-size:20px;">@Model.Department.DepartmentName</td>
+    </tr>
+    <tr>
+        <td style="color:brown;font-size:20px;">Designation</td>
+        <td style="font-size:20px;">@Model.Designation.DesignationName</td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Update Profile", "UpdateMyProfile", new { id = Model.Id })
+        </td>
+    </tr>
+  
+</table>

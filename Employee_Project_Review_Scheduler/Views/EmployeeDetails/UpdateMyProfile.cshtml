@@ -1,0 +1,84 @@
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "UpdateMyProfile";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+<h2>UpdateMyProfile</h2>
+
+
+@using (Html.BeginForm("UpdateMyProfile", "EmployeeDetails", FormMethod.Post))
+{
+    @Html.HiddenFor(Model => Model.Id)
+    @Html.HiddenFor(Model => Model.Gender)
+    @Html.HiddenFor(Model => Model.DOB)
+    @Html.HiddenFor(Model => Model.DepartmentId)
+    @Html.HiddenFor(Model => Model.DesignationId)
+    @Html.HiddenFor(Model => Model.DOJ)
+    @Html.HiddenFor(Model => Model.AccountId)
+
+    <table cellpadding="8">
+        <tr>
+            <td>
+                Firstname
+            </td>
+            <td>
+                @Html.EditorFor(Model => Model.Firstname)
+                @Html.ValidationMessageFor(model => model.Firstname, "", new { @style = "color:red" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Lastname
+            </td>
+            <td>
+                @Html.EditorFor(Model => Model.Lastname)
+                @Html.ValidationMessageFor(model => model.Lastname, "", new { @style = "color:red" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("EmailId")
+
+            </td>
+            <td>
+                @Html.EditorFor(Model => Model.EmailId)
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @style = "color:red" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.Label("MobileNumber")
+
+            </td>
+            <td>
+                @Html.EditorFor(Model => Model.Mobilenumber)
+                @Html.ValidationMessageFor(model => model.Mobilenumber, "", new { @style = "color:red" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Cancel", "ViewMyProfile")
+            </td>
+            <td>
+                <input type="submit" id="Submit" />
+            </td>
+        </tr>
+    </table>
+}
+
+
+
+
+
+
+
+
+
+
+
+

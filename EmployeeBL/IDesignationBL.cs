@@ -10,8 +10,9 @@ namespace ReviewSchedulerBL
    public interface IDesignationBL
     {
         bool AddDesignation(Designations designations);
-        IEnumerable<Designations> GetDesignations();
+        List<Designations> GetDesignations();
         
         void DeleteDesignations(int designationId);
+        Designations GetDesignationByDesignationId(int designationId);
     }
 }

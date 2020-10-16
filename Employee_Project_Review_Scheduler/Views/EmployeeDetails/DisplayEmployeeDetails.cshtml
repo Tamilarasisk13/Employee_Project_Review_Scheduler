@@ -23,7 +23,7 @@
         <th class="tbtitle">AccountId</th>
     </tr>
     @foreach (EmployeeEntity.Employee employee in (IEnumerable<EmployeeEntity.Employee>)TempData["Employees"])
-            {
+    {
         <tr>
             <td align="center">@employee.Firstname</td>
             <td align="center">@employee.Lastname</td>
@@ -39,11 +39,11 @@
             <td align="center">@Html.ActionLink("Edit", "Edit", new { id = employee.Id }) </td>
             <td align="center">@Html.ActionLink("Delete", "Delete", new { id = employee.Id }, new { onclick = "return confirm('Are you want to delete?');" }) </td>
         </tr>
-    }
+    }  
+        @Html.ActionLink("AddEmployee", "AddEmployee", null, new { @class = "Addcenter" })
+</table>
 
-</table><br />
-@Html.ActionLink("AddEmployee", "AddEmployee", null, new { @class = "Addbtn" })
-
+    
 
 
 

@@ -9,7 +9,7 @@ namespace EmployeeDAL
    public class DesignationRepositary : IDesignationRepositary
     {
         //Method to get employee Designations
-        public IEnumerable<Designations> GetDesignations()
+        public List<Designations> GetDesignations()
         {
             EmployeeContext employeeContext = new EmployeeContext();
             return employeeContext.EmployeeDesignations.ToList();
@@ -43,6 +43,14 @@ namespace EmployeeDAL
 
         //Method to get employee by DesignationId
         public Designations GetEmployeeById(int designationId)
+        {
+            using (EmployeeContext employeeContext = new EmployeeContext())
+            {
+                return employeeContext.EmployeeDesignations.Find(designationId);
+            }
+        }
+
+        public Designations GetDesignationByDesignationId(int designationId)
         {
             using (EmployeeContext employeeContext = new EmployeeContext())
             {

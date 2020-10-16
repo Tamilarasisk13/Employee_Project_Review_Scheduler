@@ -59,60 +59,111 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DepartmentRepositary.cs" />
-    <Compile Include="DesignationRepositary.cs" />
+    <Compile Include="Migrations\202010140918477_review.cs" />
+    <Compile Include="Migrations\202010140918477_review.designer.cs">
+      <DependentUpon>202010140918477_review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010150610331_dbsp.cs" />
+    <Compile Include="Migrations\202010150610331_dbsp.designer.cs">
+      <DependentUpon>202010150610331_dbsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010150659064_drop.cs" />
+    <Compile Include="Migrations\202010150659064_drop.designer.cs">
+      <DependentUpon>202010150659064_drop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010150722237_dropsa.cs" />
+    <Compile Include="Migrations\202010150722237_dropsa.designer.cs">
+      <DependentUpon>202010150722237_dropsa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010150725372_dropsahas.cs" />
+    <Compile Include="Migrations\202010150725372_dropsahas.designer.cs">
+      <DependentUpon>202010150725372_dropsahas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010150731509_dr.cs" />
+    <Compile Include="Migrations\202010150731509_dr.designer.cs">
+      <DependentUpon>202010150731509_dr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010160532028_final.cs" />
+    <Compile Include="Migrations\202010160532028_final.designer.cs">
+      <DependentUpon>202010160532028_final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010160725523_finaln.cs" />
+    <Compile Include="Migrations\202010160725523_finaln.designer.cs">
+      <DependentUpon>202010160725523_finaln.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DesignationRepositary.cs" />
     <Compile Include="EmployeeContext.cs" />
     <Compile Include="IDepartmentRepositary.cs" />
     <Compile Include="IDesignationRepositary.cs" />
     <Compile Include="IEmployeeRepositary.cs" />
     <Compile Include="EmployeesRepositary.cs" />
-    <Compile Include="Migrations\202003111238469_InitialCreate.cs" />
-    <Compile Include="Migrations\202003111238469_InitialCreate.designer.cs">
-      <DependentUpon>202003111238469_InitialCreate.cs</DependentUpon>
+    <Compile Include="IReviewDetailsRepositary.cs" />
+    <Compile Include="Migrations\202010140715080_sd.cs" />
+    <Compile Include="Migrations\202010140715080_sd.designer.cs">
+      <DependentUpon>202010140715080_sd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003120106099_is.cs" />
-    <Compile Include="Migrations\202003120106099_is.designer.cs">
-      <DependentUpon>202003120106099_is.cs</DependentUpon>
+    <Compile Include="Migrations\202010140813040_gsdh.cs" />
+    <Compile Include="Migrations\202010140813040_gsdh.designer.cs">
+      <DependentUpon>202010140813040_gsdh.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003120538067_spall.cs" />
-    <Compile Include="Migrations\202003120538067_spall.designer.cs">
-      <DependentUpon>202003120538067_spall.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003120912491_spallh.cs" />
-    <Compile Include="Migrations\202003120912491_spallh.designer.cs">
-      <DependentUpon>202003120912491_spallh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003280450035_log.cs" />
-    <Compile Include="Migrations\202003280450035_log.designer.cs">
-      <DependentUpon>202003280450035_log.cs</DependentUpon>
+    <Compile Include="Migrations\202010140855536_gsdgdfgdf.cs" />
+    <Compile Include="Migrations\202010140855536_gsdgdfgdf.designer.cs">
+      <DependentUpon>202010140855536_gsdgdfgdf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EmployeeEntity\EmployeeEntity.csproj">
-      <Project>{8c8fdca6-ce3d-460e-9f16-6ca4d88e2f43}</Project>
-      <Name>EmployeeEntity</Name>
-    </ProjectReference>
+    <Compile Include="ReviewDetailsRepositary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003111238469_InitialCreate.resx">
-      <DependentUpon>202003111238469_InitialCreate.cs</DependentUpon>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeCommon\EmployeeCommon.csproj">
+      <Project>{cd8489e3-450d-4c12-9df5-d7b3b1403263}</Project>
+      <Name>EmployeeCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmployeeEntity\EmployeeEntity.csproj">
+      <Project>{8c8fdca6-ce3d-460e-9f16-6ca4d88e2f43}</Project>
+      <Name>EmployeeEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010140715080_sd.resx">
+      <DependentUpon>202010140715080_sd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003120106099_is.resx">
-      <DependentUpon>202003120106099_is.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010140813040_gsdh.resx">
+      <DependentUpon>202010140813040_gsdh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003120538067_spall.resx">
-      <DependentUpon>202003120538067_spall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010140855536_gsdgdfgdf.resx">
+      <DependentUpon>202010140855536_gsdgdfgdf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003120912491_spallh.resx">
-      <DependentUpon>202003120912491_spallh.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010140918477_review.resx">
+      <DependentUpon>202010140918477_review.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003280450035_log.resx">
-      <DependentUpon>202003280450035_log.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010150610331_dbsp.resx">
+      <DependentUpon>202010150610331_dbsp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010150659064_drop.resx">
+      <DependentUpon>202010150659064_drop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010150722237_dropsa.resx">
+      <DependentUpon>202010150722237_dropsa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010150725372_dropsahas.resx">
+      <DependentUpon>202010150725372_dropsahas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010150731509_dr.resx">
+      <DependentUpon>202010150731509_dr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010160532028_final.resx">
+      <DependentUpon>202010160532028_final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010160725523_finaln.resx">
+      <DependentUpon>202010160725523_finaln.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

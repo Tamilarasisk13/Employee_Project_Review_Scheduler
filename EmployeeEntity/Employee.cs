@@ -1,16 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeEntity
 {
-    //public enum Designation
-    //{
-    //    Scheduler,
-    //    Reviewer,
-    //    Reviewee,
-
-    //}
+    
     public class Employee
     {
         [Key]
@@ -46,7 +41,7 @@ namespace EmployeeEntity
         [DataType(DataType.Date)]
         public DateTime DOJ { get; set; }
 
-        public int DesignationId { get; set; }
+        public int DesignationId { get; set; }       
         public Designations Designation { get; set; }
 
         public int DepartmentId { get; set; }
@@ -54,6 +49,9 @@ namespace EmployeeEntity
 
         public int AccountId { get; set; }
         public AccountDetails AccountDetails { get; set; }
+
+
+        public  ICollection<Review_Details> Review_Detail { get; set; }
     }
 }
 

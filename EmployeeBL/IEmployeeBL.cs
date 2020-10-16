@@ -16,5 +16,9 @@ namespace ReviewSchedulerBL
         IEnumerable<AccountDetails> DisplayAccountDetails();
         void Delete(int employeeId);
         bool UpdateEmployee(Employee employee);
+         List<Employee> GetEmployees();
+        bool UpdatePassword(AccountDetails accountDetails);
+
+        //Employee GetEmployeeByDepartmenIDAndDesignationID(int DepartmentId, int DesignationId);
     }
 }

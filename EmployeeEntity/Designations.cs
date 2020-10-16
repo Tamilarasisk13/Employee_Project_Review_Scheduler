@@ -12,5 +12,7 @@ namespace EmployeeEntity
         [Required(ErrorMessage = "* Designation name is required")]
         [MaxLength(30, ErrorMessage = "* Designation name is less than 30 characters")]
         public string DesignationName { get; set; }
+
+        public  ICollection<Review_Details> Review_Detail { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace ReviewSchedulerBL
     public interface IDepartmentBL
     {
         bool AddDepartment(Departments departments);
-        IEnumerable<Departments> GetDepartments();
+        List<Departments> GetDepartments();
         
         void DeleteDepartments(int departmentId);
     }

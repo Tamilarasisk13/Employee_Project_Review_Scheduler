@@ -64,11 +64,17 @@
     <Compile Include="AccountDetails.cs" />
     <Compile Include="ExceptionLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReviewDetails.cs" />
+    <Compile Include="Review_Details.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeCommon\EmployeeCommon.csproj">
+      <Project>{cd8489e3-450d-4c12-9df5-d7b3b1403263}</Project>
+      <Name>EmployeeCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

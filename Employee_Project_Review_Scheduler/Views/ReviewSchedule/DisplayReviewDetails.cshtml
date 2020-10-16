@@ -1,0 +1,38 @@
+﻿@model Employee_Project_Review_Scheduler.Models.ReviewDetailsViewModel
+
+@{
+    ViewBag.Title = "DisplayReviewDetails";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>DisplayReviewDetails</h2>
+
+<table border="0">
+    <tr>
+        <th class="tbtitle">Id</th>
+        <th class="tbtitle">Reviewer Name</th>
+        <th class="tbtitle">Reviewer Designation Id</th>
+        <th class="tbtitle">Reviewer Department Id</th>
+        <th class="tbtitle">Reviewee Name</th>
+        <th class="tbtitle">Reviewee Designation Id</th>
+        <th class="tbtitle">Reviewee Department Id</th>
+        <th class="tbtitle">Date</th>
+    </tr>
+    @foreach (EmployeeEntity.Review_Details employee in (IEnumerable<EmployeeEntity.Review_Details>)TempData["Employees"])
+            {
+        <tr>
+            <td align="center">@employee.Id</td>
+            <td align="center">@employee.Reviewername</td>
+            <td align="center">@employee.ReviewerDesignationId</td>
+            <td align="center">@employee.ReviewerDepartmentId</td>
+            <td align="center">@employee.Revieweename</td>
+            <td align="center">@employee.RevieweeDesignationId</td>
+            <td align="center">@employee.RevieweeDepartmentId</td>
+            <td align="center">@employee.Date</td>
+            <td align="center">@Html.ActionLink("Edit", "Edit", new { id = employee.Id }) </td>
+            <td align="center">@Html.ActionLink("Delete", "Delete", new { id = employee.Id }, new { onclick = "return confirm('Are you want to delete?');" }) </td>        
+        </tr>
+    }
+
+</table><br />
+

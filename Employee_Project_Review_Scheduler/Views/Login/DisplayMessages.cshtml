@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "DisplayMessages";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<h2>DisplayMessages</h2>
+
+
+<div style="font-size:200%">
+    @TempData["Message"]
+</div>
+<div>
+    @Html.ActionLink("Ok", "Edit", null, new { @class = "Addbtn" })
+</div>

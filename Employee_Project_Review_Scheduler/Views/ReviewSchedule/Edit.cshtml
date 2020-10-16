@@ -1,0 +1,209 @@
+﻿@model Employee_Project_Review_Scheduler.Models.ReviewDetailsViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
+}
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Update", "ReviewSchedule", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(Model => Model.Id)
+
+    <table>
+    <tr>
+        <td>
+            <label>Reviewer Department</label>
+        </td>
+        <td>
+            @Html.DropDownListFor(x => x.ReviewerDepartmentId, (IEnumerable<SelectListItem>)ViewBag.Departments, "--Select--", new { @id = "ddlReviewerDepartment" })
+        </td>
+    </tr>
+        <tr>
+            <td>
+                <label>Reviewer Designation</label>
+            </td>
+            <td id="ReviewerDesignation">
+                @Html.DropDownListFor(x => x.ReviewerDesignationId, new List<SelectListItem>(), "--Select--", new { @id = "ddlReviewerDesignation" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> Reviewer Name</label>
+            </td>
+            <td id="ReviewerName">
+                @Html.DropDownListFor(x => x.ReviewerName, new List<SelectListItem>(), "--Select--", new { @id = "ddlReviewerName" });
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Reviewee Department</label>
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.RevieweeDepartmentId, (IEnumerable<SelectListItem>)ViewBag.Departments, "--Select--", new { @id = "ddlRevieweeDepartment" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Reviewee Designation</label>
+            </td>
+            <td id="RevieweeDesignation">
+                @Html.DropDownListFor(x => x.RevieweeDesignationId, new List<SelectListItem>(), "--Select--", new { @id = "ddlRevieweeDesignation" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label> Reviewee Name</label>
+            </td>
+            <td id="RevieweeName">
+                @Html.DropDownListFor(x => x.RevieweeName, new List<SelectListItem>(), "--Select--", new { @id = "ddlRevieweeName" });
+            </td>
+        </tr>
+     
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Date)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Date, "", new { @id = "dateId" })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "warningmsg" })
+            </td>
+        </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="Submit" />
+                </td>
+            </tr>
+    </table>
+}
+
+<script type="text/javascript">
+    $("#ddlReviewerDesignation").change(function ()
+{
+    var ReviewerDesignationId = parseInt($(this).val());
+    var ReviewerDepartmentId = parseInt($("#ddlReviewerDepartment").val());
+    if (!isNaN(ReviewerDesignationId))
+    {
+        var ddlReviewerName = $('#ddlReviewerName');
+        ddlReviewerName.append($("<option></option>").val('').html('Please wait ...'));
+        debugger;
+                $.ajax({
+            url: "/ReviewSchedule/GetReviewerNames",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { reviewerDepartmentId: ReviewerDepartmentId, reviewerDesignationId: ReviewerDesignationId },
+                    success: function(d) {
+                ddlReviewerName.empty(); // Clear the plese wait
+                ddlReviewerName.append($("<option></option>").val('').html('--Select--'));
+                        $.each(d, function(i, reviewerNames) {
+                    ddlReviewerName.append($("<option></option>").val(reviewerNames.Value).html(reviewerNames.Text));
+                });
+            },
+                    error: function() {
+                alert('Error!');
+            }
+        });
+    }
+});
+</script>
+
+<script type="text/javascript">
+    $("#ddlReviewerDepartment").change(function ()
+{
+    var ReviewerDepartmentId = parseInt($(this).val());
+    if (!isNaN(ReviewerDepartmentId))
+    {
+        var ddlReviewerDesignation = $('#ddlReviewerDesignation');
+        ddlReviewerDesignation.append($("<option></option>").val('').html('Please wait ...'));
+        debugger;
+                $.ajax({
+            url: "/ReviewSchedule/GetReviewerDesignation",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { reviewerDepartmentId: ReviewerDepartmentId },
+                    success: function(d) {
+                ddlReviewerDesignation.empty(); // Clear the plese wait
+                ddlReviewerDesignation.append($("<option></option>").val('').html('--Select--'));
+                        $.each(d, function(i, reviewerDesignations) {
+                    ddlReviewerDesignation.append($("<option></option>").val(reviewerDesignations.Value).html(reviewerDesignations.Text));
+                });
+            },
+                    error: function() {
+                alert('Error!');
+            }
+        });
+    }
+});
+</script>
+
+
+
+<script type="text/javascript">
+    $("#ddlRevieweeDesignation").change(function ()
+{
+    var RevieweeDesignationId = parseInt($(this).val());
+    var RevieweeDepartmentId = parseInt($("#ddlRevieweeDepartment").val());
+    if (!isNaN(RevieweeDesignationId))
+    {
+        var ddlRevieweeName = $('#ddlRevieweeName');
+        ddlRevieweeName.append($("<option></option>").val('').html('Please wait ...'));
+        debugger;
+                $.ajax({
+            url: "/ReviewSchedule/GetRevieweeNames",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { revieweeDepartmentId: RevieweeDepartmentId, revieweeDesignationId: RevieweeDesignationId },
+                    success: function(d) {
+                ddlRevieweeName.empty(); // Clear the plese wait
+                ddlRevieweeName.append($("<option></option>").val('').html('--Select--'));
+                        $.each(d, function(i, revieweeNames) {
+                    ddlRevieweeName.append($("<option></option>").val(revieweeNames.Value).html(revieweeNames.Text));
+                });
+            },
+                    error: function() {
+                alert('Error!');
+            }
+        });
+    }
+});
+</script>
+
+<script type="text/javascript">
+    $("#ddlRevieweeDepartment").change(function ()
+{
+    var RevieweeDepartmentId = parseInt($(this).val());
+    if (!isNaN(RevieweeDepartmentId))
+    {
+        var ddlRevieweeDesignation = $('#ddlRevieweeDesignation');
+        ddlRevieweeDesignation.append($("<option></option>").val('').html('Please wait ...'));
+        debugger;
+                $.ajax({
+            url: "/ReviewSchedule/GetRevieweeDesignation",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { revieweeDepartmentId: RevieweeDepartmentId },
+                    success: function(d) {
+                ddlRevieweeDesignation.empty(); // Clear the plese wait
+                ddlRevieweeDesignation.append($("<option></option>").val('').html('--Select--'));
+                        $.each(d, function(i, revieweeDesignations) {
+                    ddlRevieweeDesignation.append($("<option></option>").val(revieweeDesignations.Value).html(revieweeDesignations.Text));
+                });
+            },
+                    error: function() {
+                alert('Error!');
+            }
+        });
+    }
+});
+</script>
+
+
+
+
+

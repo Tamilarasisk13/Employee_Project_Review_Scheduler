@@ -62,6 +62,7 @@ a {
 .Addbtn {
     font-size: 25px;
     color: red;
+    padding-left:200%;
 }
 
 .Addcenter {
@@ -99,4 +100,9 @@ a {
     width: 200px;
     height: 75px;
     padding-top: 20px;
+}
+.noschedule{
+    color:blue;
+    padding-left:20%;
+    font-size:220%
 }

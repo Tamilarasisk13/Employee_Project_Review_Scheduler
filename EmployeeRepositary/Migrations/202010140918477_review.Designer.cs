@@ -7,13 +7,13 @@ namespace EmployeeRepositary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class spallh : IMigrationMetadata
+    public sealed partial class review : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(spallh));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(review));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003120912491_spallh"; }
+            get { return "202010140918477_review"; }
         }
         
         string IMigrationMetadata.Source
