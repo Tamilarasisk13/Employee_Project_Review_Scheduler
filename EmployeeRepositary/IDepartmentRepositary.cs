@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeDAL
 {
-   public interface IDepartmentRepositary
-    {
-        
+    //Interface of Department Repositary
+    public interface IDepartmentRepositary
+    {       
         List<Departments> GetDepartments();
         bool AddDepartments(Departments departments);
         void DeleteDepartments(int departmentId);

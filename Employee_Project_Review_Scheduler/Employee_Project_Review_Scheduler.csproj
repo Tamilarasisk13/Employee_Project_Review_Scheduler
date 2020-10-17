@@ -208,20 +208,19 @@
     <Content Include="Views\EmployeeDetails\Edit.cshtml" />
     <Content Include="Views\EmployeeDetails\ExistsEmployee.cshtml" />
     <Content Include="Views\EmployeeDetails\Index.cshtml" />
-    <Content Include="Views\EmployeeDetails\ViewMyProfile.cshtml" />
     <Content Include="Views\ReviewSchedule\ScheduleReview.cshtml" />
     <Content Include="Views\ReviewSchedule\DisplayReviewDetails.cshtml" />
     <Content Include="Views\ReviewSchedule\NoSchedule.cshtml" />
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\User\DisplayReviewerDetails.cshtml" />
     <Content Include="Views\User\DisplayRevieweeDetails.cshtml" />
-    <Content Include="Views\EmployeeDetails\UpdateProfile.cshtml" />
     <Content Include="Views\EmployeeDetails\UpdateMyProfile.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\ReviewSchedule\DisplayMessages.cshtml" />
     <Content Include="Views\ReviewSchedule\Edit.cshtml" />
     <Content Include="Views\User\DisplayBothDetails.cshtml" />
     <Content Include="Views\Login\DisplayMessages.cshtml" />
+    <Content Include="Views\Login\EditPassword.cshtml" />
+    <Content Include="Views\EmployeeDetails\ViewProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

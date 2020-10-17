@@ -1,12 +1,11 @@
-﻿@*@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
+﻿@model Employee_Project_Review_Scheduler.Models.EmployeeViewModel
 
 @{
-    ViewBag.Title = "ViewMyProfile";
+    ViewBag.Title = "ViewProfile";
     Layout = "~/Views/Shared/_EmployeeMasterPage.cshtml";
 }
 
-<h2>ViewMyProfile</h2>
-
+<h2>View Profile</h2>
 <table border="0" align="center" cellpadding="6" style="padding-top:30px;">
 
     <tr>
@@ -46,7 +45,10 @@
         <td style="color:brown;font-size:20px;">Designation</td>
         <td style="font-size:20px;">@Model.Designation.DesignationName</td>
     </tr>
-</table>*@
+    <tr>
+        <td>
+            @Html.ActionLink("Update Profile", "UpdateMyProfile", new { id = Model.Id })
+        </td>
+    </tr>
 
-
-
+</table>

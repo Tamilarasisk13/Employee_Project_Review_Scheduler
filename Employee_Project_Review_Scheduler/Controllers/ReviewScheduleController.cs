@@ -13,7 +13,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
     [Authorize(Roles = "Scheduler, User")]
     public class ReviewScheduleController : Controller
     {
-        IEmployeeBL employeeBL;
+       IEmployeeBL employeeBL;
         IDepartmentBL departmentBL;
         IDesignationBL designationBL;
         IReviewDetailsBL reviewDetailsBL;
@@ -25,8 +25,24 @@ namespace Employee_Project_Review_Scheduler.Controllers
             reviewDetailsBL = new ReviewDetailsBL();
         }
 
-        //int ReviewerDesignationId,string ReviewerName, int ReviewerDepartmentId, string RevieweeName,int RevieweeDesignationId,int RevieweeDepartmentId
+        //Get Method to schedule the review for employees
+        [HttpGet]
+        public ActionResult ScheduleReview()
+        {
+            List<SelectListItem> reviewerDepartments = new List<SelectListItem>();
+            ReviewDetailsViewModel reviewDetailsViewModel = new ReviewDetailsViewModel();
 
+            List<Departments> states = departmentBL.GetDepartments();
+            states.ForEach(x =>
+            {
+                reviewerDepartments.Add(new SelectListItem { Text = x.DepartmentName, Value = x.DepartmentId.ToString() });
+            });
+            reviewDetailsViewModel.Departments = reviewerDepartments;
+            return View(reviewDetailsViewModel);
+        }
+
+
+        //Post Method to schedule the review for employees
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
@@ -74,26 +90,8 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return RedirectToAction("ScheduleReview");
 
         }
-        public ActionResult DisplayMessages()
-        {
-            return View();
-        }
 
-        [HttpGet]
-        public ActionResult ScheduleReview()
-        {
-            List<SelectListItem> reviewerDepartments = new List<SelectListItem>();
-            ReviewDetailsViewModel reviewDetailsViewModel = new ReviewDetailsViewModel();
-
-            List<Departments> states = departmentBL.GetDepartments();
-            states.ForEach(x =>
-            {
-                reviewerDepartments.Add(new SelectListItem { Text = x.DepartmentName, Value = x.DepartmentId.ToString() });
-            });
-            reviewDetailsViewModel.Departments = reviewerDepartments;
-            return View(reviewDetailsViewModel);
-        }
-
+        //Method to display review details
         [Authorize(Roles = "Scheduler")]
         public ActionResult DisplayReviewDetails()
         {
@@ -101,6 +99,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return View();
         }
 
+        //Method to delete review details data
         [Authorize(Roles = "Scheduler")]
         public ActionResult Delete(int id)
         {
@@ -108,11 +107,12 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return RedirectToAction("DisplayReviewDetails");
         }
 
+        //Get Method to edit review details data
         [Authorize(Roles = "Scheduler")]
         public ActionResult Edit(int id)
         {
             Review_Details reviewDetail = reviewDetailsBL.GetReviewDetailsById(id);
-            //  ViewBag.Departments = new SelectList(departmentBL.GetDepartments(), "DepartmentID", "DepartmentName");
+            //ViewBag.Departments = new SelectList(departmentBL.GetDepartments(), "DepartmentID", "DepartmentName");
             //ViewBag.Designation = new SelectList(designationBL.GetDesignations(), "DesignationID", "DesignationName");
             List<SelectListItem> reviewerDepartments = new List<SelectListItem>();
             ReviewDetailsViewModel reviewDetailsViewModel = new ReviewDetailsViewModel();
@@ -134,18 +134,15 @@ namespace Employee_Project_Review_Scheduler.Controllers
             employeeViewModel.RevieweeDesignationId = reviewDetail.RevieweeDesignationId;
             employeeViewModel.RevieweeDepartmentId = reviewDetail.RevieweeDepartmentId;
             employeeViewModel.Date = reviewDetail.Date;
-
-
             return View(employeeViewModel);
         }
 
-        //Post Method to edit the employee data
+        //Post Method to edit review details data
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Scheduler")]
         public RedirectToRouteResult Update(Review_Details reviewDetail)
         {
-           // ReviewDetailsViewModel employeeViewModel = new ReviewDetailsViewModel();
             if (reviewDetail.Reviewername == reviewDetail.Revieweename)
             {
                 TempData["Message"] = "Reviewer and Reviewee should not be same";
@@ -162,19 +159,18 @@ namespace Employee_Project_Review_Scheduler.Controllers
                 TempData["Message"] = "Already a review is scheduled on that day for reviewer";
                 return RedirectToAction("DisplayMessages");
             }
-
             else if (count == 0)
-                // return RedirectToAction("DisplayReviewDetails");
-               // return View(employeeViewModel);
             reviewDetailsBL.UpdateReview(reviewDetail);
             return RedirectToAction("DisplayReviewDetails");
         }
 
+        //Method to display no schedule message
         public ActionResult NoSchedule()
         {
             return View();
         }
 
+        //Method to get Reviewer Designation
         [HttpPost]
         public ActionResult GetReviewerDesignation(string reviewerDepartmentId)
         {
@@ -197,7 +193,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return Json(reviewerDesignations, JsonRequestBehavior.AllowGet);
         }
 
-
+        //Method to get Reviewer Names
         [HttpPost]
         public ActionResult GetReviewerNames(string reviewerDepartmentId, string reviewerDesignationId)
         {
@@ -218,6 +214,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return Json(reviewerNames, JsonRequestBehavior.AllowGet);
         }
 
+        //Method to get Reviewee Designation
         [HttpPost]
         public ActionResult GetRevieweeDesignation(string revieweeDepartmentId)
         {
@@ -240,7 +237,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return Json(revieweeDesignations, JsonRequestBehavior.AllowGet);
         }
 
-
+        //Method to get Reviewee Names
         [HttpPost]
         public ActionResult GetRevieweeNames(string revieweeDepartmentId, string revieweeDesignationId)
         {
@@ -252,13 +249,18 @@ namespace Employee_Project_Review_Scheduler.Controllers
                 revieweedesignationId = Convert.ToInt32(revieweeDesignationId);
                 List<Employee> employees = employeeBL.GetEmployees();
                 List<Employee> employee = employees.Where(x => x.DesignationId == revieweedesignationId && x.DepartmentId == revieweedepartmentId).ToList();
-
                 employee.ForEach(x =>
                 {
                     revieweeNames.Add(new SelectListItem { Text = x.Firstname, Value = x.Id.ToString() });
                 });
             }
             return Json(revieweeNames, JsonRequestBehavior.AllowGet);
+        }
+
+        //Method to display warning messages
+        public ActionResult DisplayMessages()
+        {
+            return View();
         }
     }
 }

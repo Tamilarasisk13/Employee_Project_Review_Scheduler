@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace EmployeeDAL
 {
-   public interface IEmployeeRepositary
+    //Interface of Employee Repositary
+    public interface IEmployeeRepositary
     {
         IEnumerable<Employee> DisplayEmployeeDetails();
         IEnumerable<AccountDetails> DisplayAccountDetails();
@@ -16,9 +17,9 @@ namespace EmployeeDAL
         Employee GetEmployeeByAccountId(int id);
         AccountDetails GetAccountById(int userEmployeeId);
         AccountDetails AddAccountDetails(AccountDetails accountDetails);
-      List<Employee> GetEmployees();
+        List<Employee> GetEmployees();
         bool UpdatePassword(AccountDetails accountDetails);
-        //Employee GetEmployeeByDepartmenIDAndDesignationID(int UserDepartmentId, int UserDesignationId);
+        
 
     }
 }

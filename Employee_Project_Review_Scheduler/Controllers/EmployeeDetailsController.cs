@@ -1,7 +1,6 @@
 ﻿using Employee_Project_Review_Scheduler.Models;
 using EmployeeEntity;
 using ReviewSchedulerBL;
-using System;
 using System.Web.Mvc;
 
 
@@ -51,7 +50,6 @@ namespace Employee_Project_Review_Scheduler.Controllers
                     {
                         AccountDetails accountDetails = new AccountDetails();
                         accountDetails.Username = employeeViewModel.EmailId;
-                        //accountDetails.Id = id;
                         accountDetails.Password = employeeBL.GeneratePassword(employeeViewModel.EmailId, employeeViewModel.Mobilenumber.ToString());
                         accountDetails.Role = "User";
                         AccountDetails account = employeeBL.AddAccountDetails(accountDetails);
@@ -79,18 +77,9 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return View();
         }
 
-        //public ActionResult DisplayEmployeeDetails()
-        //{
-        //    List<Employee> employees = employeeBL.DisplayEmployeeDetails();
-        //    EmployeeViewModel employeeViewModel = new EmployeeViewModel();
-        //    employeeViewModel = AutoMapper.Mapper.Map<Employee, EmployeeViewModel>(employees);
-        //    return View(employeeViewModel);
-        //}
-
-
-
+        //Method to view the profile of employee
         [Authorize(Roles = "Admin,User,Scheduler")]
-        public ActionResult UpdateProfile()
+        public ActionResult ViewProfile()
         {
             int UserAccountId = 0;
             if (Session["AccountId"] != null)
@@ -103,6 +92,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return View(employeeViewModel);
         }
 
+        //Get Method to update the profile of employee
         [Authorize(Roles = "Admin,User,Scheduler")]
         public ActionResult UpdateMyProfile(int id)
         {
@@ -111,12 +101,15 @@ namespace Employee_Project_Review_Scheduler.Controllers
             employeeViewModel = AutoMapper.Mapper.Map<Employee, EmployeeViewModel>(employee);
             return View(employeeViewModel);
         }
+
+        //Post Method to update the profile of employee
         [HttpPost]
         public ActionResult UpdateMyProfile(Employee employee)
         {
             employeeBL.UpdateEmployee(employee);
             return RedirectToAction("UpdateProfile");
         }
+
         //Method to display account details
         [Authorize(Roles = "Admin")]
         public ActionResult DisplayAccountDetails()

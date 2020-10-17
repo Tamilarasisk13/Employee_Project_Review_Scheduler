@@ -10,10 +10,12 @@ namespace Employee_Project_Review_Scheduler.Controllers
     public class DepartmentController : Controller
     {
         IDepartmentBL departmentBL;
+
         public DepartmentController()
         {
             departmentBL = new DepartmentBL();
         }
+
         //Get Method to add the department
         public ViewResult AddDepartments()
         {

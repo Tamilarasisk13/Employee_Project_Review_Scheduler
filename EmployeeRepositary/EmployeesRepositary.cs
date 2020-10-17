@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Data.SqlClient;
-using System.Runtime.Remoting.Contexts;
-using System;
 
 namespace EmployeeDAL
 {
@@ -83,8 +81,7 @@ namespace EmployeeDAL
                 return false;
         }
 
-
-
+        //Methof to check the user is valid user or not
         public AccountDetails CheckLogin(AccountDetails accountDetails)
         {
             using (EmployeeContext employeeContext = new EmployeeContext())
@@ -126,7 +123,6 @@ namespace EmployeeDAL
             {
                 return employeeContext.Employees.Include("Department").Include("Designation").FirstOrDefault(p => p.AccountId == userAccountId);
             }
-
         }
 
 
@@ -138,46 +134,43 @@ namespace EmployeeDAL
                 return employeeContext.Account.Find(accountId);
             }
         }
+
+        //Method to get the employees
         public List<Employee> GetEmployees()
         {
             EmployeeContext employeeContext = new EmployeeContext();
             return employeeContext.Employees.ToList();
         }
+
         //Method to update employee
         public bool UpdateEmployee(Employee employee)
         {
-            //try
-            //{
+
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
                 employeeContext.Entry(employee).State = EntityState.Modified;
                 employeeContext.SaveChanges();
                 return true;
             }
-            //}
-            //    catch
-            //    {
-            //        return false;
-            //    }
         }
-        //Attaching an entity of type 'EmployeeEntity.AccountDetails' failed because another entity of the same type already has the same primary key value.This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values.This may be because some entities are new and have not yet received database-generated key values.In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+
+        //Method to update account details
         public bool UpdatePassword(AccountDetails accountDetails)
         {
-            //int count = 0;
             AccountDetails accountdetails;
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
 
-                    accountdetails= employeeContext.Account.FirstOrDefault(p=>p.Username==accountDetails.Username);
-                if(accountdetails==null)
+                accountdetails = employeeContext.Account.FirstOrDefault(p => p.Username == accountDetails.Username);
+                if (accountdetails == null)
                 {
                     return false;
                 }
-                    accountdetails.Password = accountDetails.Password;
-                    employeeContext.Entry(accountdetails).State = EntityState.Modified;
-                    employeeContext.SaveChanges();
-                    return true;
-             
+                accountdetails.Password = accountDetails.Password;
+                employeeContext.Entry(accountdetails).State = EntityState.Modified;
+                employeeContext.SaveChanges();
+                return true;
+
             }
         }
 

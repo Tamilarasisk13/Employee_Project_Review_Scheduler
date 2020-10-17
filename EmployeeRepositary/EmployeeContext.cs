@@ -7,9 +7,11 @@ namespace EmployeeDAL
 {
     public class EmployeeContext : DbContext
     {
+
         public EmployeeContext() : base("ProjectConnection")
         {
         }
+
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Departments> EmployeeDepartments { get; set; }
         public DbSet<Designations> EmployeeDesignations { get; set; }
@@ -24,7 +26,7 @@ namespace EmployeeDAL
             modelBuilder.Entity<Departments>().MapToStoredProcedures();
             modelBuilder.Entity<Designations>().MapToStoredProcedures();
             modelBuilder.Entity<AccountDetails>().MapToStoredProcedures();
-          //  modelBuilder.Entity<Review_Details>().MapToStoredProcedures();
+           // modelBuilder.Entity<Review_Details>().MapToStoredProcedures();
             base.OnModelCreating(modelBuilder);
         }
     }

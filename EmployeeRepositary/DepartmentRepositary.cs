@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace EmployeeDAL
 {
-    public class DepartmentRepositary: IDepartmentRepositary
+    public class DepartmentRepositary : IDepartmentRepositary
     {
 
         //Method to get employee departments
@@ -19,15 +19,10 @@ namespace EmployeeDAL
         //Method to add department
         public bool AddDepartments(Departments departments)
         {
-            //using (EmployeeContext employeeContext = new EmployeeContext())
-            //{
-            //    SqlParameter sql = new SqlParameter("@DepartmentName", departments.DepartmentName);
-            //    int count = employeeContext.Database.ExecuteSqlCommand("Departments_Insert @DepartmentName", sql);
-            //    return true;
-            //}
-
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
+                //    SqlParameter sql = new SqlParameter("@DepartmentName", departments.DepartmentName);
+                //    int count = employeeContext.Database.ExecuteSqlCommand("Departments_Insert @DepartmentName", sql);
                 employeeContext.Entry(departments).State = EntityState.Added;
                 employeeContext.SaveChanges();
             }
@@ -39,7 +34,7 @@ namespace EmployeeDAL
         {
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
-                Departments departments= GetEmployeeById(departmentId);
+                Departments departments = GetEmployeeById(departmentId);
                 employeeContext.Entry(departments).State = EntityState.Deleted;
                 employeeContext.SaveChanges();
             }

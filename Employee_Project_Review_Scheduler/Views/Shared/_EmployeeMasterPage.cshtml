@@ -9,9 +9,9 @@
 <body class="BackgroundImage">
 
     <div style="display:flex">
-        <div>
+        @*<div>
             <img src="~/Images/Screenshot (57).png" class="aspireimage" />  
-        </div>
+        </div>*@
         <div class="heading" style="color:blueviolet">
             <header><h1><i><b>Aspire Systems</b></i></h1></header>
         </div>
@@ -32,7 +32,7 @@
             @*Links viewed by Admin*@
             @if (HttpContext.Current.User.IsInRole(Common.Roles.Admin.ToString()))
             {
-                @Html.ActionLink("My Profile", "UpdateProfile", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("My Profile", "ViewProfile", "EmployeeDetails")<bnsp></bnsp>
                 @Html.ActionLink("Employee Details", "DisplayEmployeeDetails", "EmployeeDetails")<bnsp></bnsp>
                 @Html.ActionLink("Account Details", "DisplayAccountDetails", "EmployeeDetails")<bnsp></bnsp>
                 @Html.ActionLink("Department Details", "DisplayDepartments", "Department")<bnsp></bnsp>
@@ -43,7 +43,7 @@
             @*Links viewed by User*@
             @if (HttpContext.Current.User.IsInRole(Common.Roles.User.ToString()))
             {
-            @Html.ActionLink("My Profile", "UpdateProfile", "EmployeeDetails")<bnsp></bnsp>
+            @Html.ActionLink("My Profile", "ViewProfile", "EmployeeDetails")<bnsp></bnsp>
                 @Html.ActionLink("My Review", "Index", "User")
                 
             }
@@ -51,7 +51,7 @@
             @*Links Viewed By Scheduler*@
             @if (HttpContext.Current.User.IsInRole(Common.Roles.Scheduler.ToString()))
             {
-                @Html.ActionLink("My Profile", "UpdateProfile", "EmployeeDetails")<bnsp></bnsp>
+                @Html.ActionLink("My Profile", "ViewProfile", "EmployeeDetails")<bnsp></bnsp>
                 @Html.ActionLink("View Review Details", "DisplayReviewDetails", "ReviewSchedule")<bnsp></bnsp>
                 @Html.ActionLink("Schedule Review", "ScheduleReview", "ReviewSchedule")<bnsp></bnsp>
                 @Html.ActionLink("My Review", "Index", "User")

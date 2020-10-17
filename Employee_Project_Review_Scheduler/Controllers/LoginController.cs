@@ -28,7 +28,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return View();
         }
 
-        //Get method to login user
+        //Post method to login user
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(LoginViewModel loginViewModel)
@@ -50,7 +50,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
                     Session["AccountId"] = account.AccountId;
                     //Employee employeeDetails = employeeBL.GetEmployeeByAccountId(account.AccountId);
                     //TempData["Employee"] = employeeDetails;
-                    return RedirectToAction("UpdateProfile", "EmployeeDetails");
+                    return RedirectToAction("ViewProfile", "EmployeeDetails");
                 }
 
                 else
@@ -62,14 +62,17 @@ namespace Employee_Project_Review_Scheduler.Controllers
             }
             return View();
         }
-        public ActionResult Edit()
+
+        //Get method to edit password
+        public ActionResult EditPassword()
         {      
             return View();
         }
 
+        //Post method to edit password
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Edit(LoginViewModel loginViewModel,string ConformPassword)
+        public ActionResult EditPassword(LoginViewModel loginViewModel,string ConformPassword)
         {
            if(loginViewModel.Password!=ConformPassword)
             {
@@ -86,6 +89,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
             return RedirectToAction("DisplayMessages");
         }
 
+        //Method to display messages
         public ActionResult DisplayMessages()
         {
             return View();

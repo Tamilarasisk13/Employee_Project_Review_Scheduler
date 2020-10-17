@@ -37,27 +37,11 @@ namespace ReviewSchedulerBL
         {
             return reviewDetailsRepositary.GetReviewDetailsById(id);
         }
-        public IEnumerable<Review_Details> DisplayReviewDetails( )
+        public IEnumerable<Review_Details> DisplayReviewDetails()
         {
             return reviewDetailsRepositary.DisplayReviewDetails();
         }
-        public string GetName(int nameId)
-        {
-            return reviewDetailsRepositary.GetName(nameId);
-        }
-        public string GetDesignation(int Id)
-        {
-            return reviewDetailsRepositary.GetDesignation(Id);
-        }
-        public string GetDepartment(int Id)
-        {
-            return reviewDetailsRepositary.GetDepartment(Id);
-        }
-
-        public int GetEmployeeIdByAccountId(int accountId)
-        {
-            return reviewDetailsRepositary.GetEmployeeIdByAccountId(accountId);
-        }
+   
         public Review_Details CheckExists(int employeeId)
         {
             return reviewDetailsRepositary.CheckExists(employeeId);
@@ -74,5 +58,22 @@ namespace ReviewSchedulerBL
         {
             return reviewDetailsRepositary.DisplayReviews(Id);
         }
+        //public string GetName(int nameId)
+        //{
+        //    return reviewDetailsRepositary.GetName(nameId);
+        //}
+        //public string GetDesignation(int Id)
+        //{
+        //    return reviewDetailsRepositary.GetDesignation(Id);
+        //}
+        //public string GetDepartment(int Id)
+        //{
+        //    return reviewDetailsRepositary.GetDepartment(Id);
+        //}
+
+        //public int GetEmployeeIdByAccountId(int accountId)
+        //{
+        //    return reviewDetailsRepositary.GetEmployeeIdByAccountId(accountId);
+        //}
     }
 }

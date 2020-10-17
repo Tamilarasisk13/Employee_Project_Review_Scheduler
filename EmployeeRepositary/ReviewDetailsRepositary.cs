@@ -1,16 +1,13 @@
 ﻿using EmployeeEntity;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeDAL
 {
     public class ReviewDetailsRepositary
     {
+        //Method to check the logix to schedule review details 
         public int CheckLogic(Review_Details reviewDetail)
         {
             int count = 0;
@@ -41,6 +38,8 @@ namespace EmployeeDAL
                 return count;
             }
         }
+
+        //Method to add review details
         public int Add(Review_Details reviewDetail)
         {
             int count = 0;
@@ -73,6 +72,8 @@ namespace EmployeeDAL
                 return count;
             }
         }
+
+        //Method to delete review details
         public void Delete(int employeeId)
         {
             using (EmployeeContext employeeContext = new EmployeeContext())
@@ -87,6 +88,8 @@ namespace EmployeeDAL
                 //employeeContext.Database.ExecuteSqlCommand("AccountDetails_Delete @AccountId", sqlAccount);
             }
         }
+
+        // Method to get review details  by employee Id
         public Review_Details GetReviewDetailsById(int employeeId)
         {
             using (EmployeeContext employeeContext = new EmployeeContext())
@@ -95,6 +98,8 @@ namespace EmployeeDAL
             }
         }
 
+
+        //Method to update review details
         public bool UpdateReview(Review_Details reviewDetail)
         {
 
@@ -104,8 +109,9 @@ namespace EmployeeDAL
                 employeeContext.SaveChanges();
                 return true;
             }
-
         }
+
+        //Method to display review details
         public IEnumerable<Review_Details> DisplayReviewDetails()
         {
             using (EmployeeContext employeeContext = new EmployeeContext())
@@ -113,6 +119,8 @@ namespace EmployeeDAL
                 return employeeContext.Review_Detail.Include("Employee").Include("Designation").Include("Department").ToList();
             }
         }
+
+        //Method to get names by Id
         public string GetName(int nameId)
         {
 
@@ -122,6 +130,8 @@ namespace EmployeeDAL
                 return employee.Firstname;
             }
         }
+
+
         public string GetDesignation(int Id)
         {
 

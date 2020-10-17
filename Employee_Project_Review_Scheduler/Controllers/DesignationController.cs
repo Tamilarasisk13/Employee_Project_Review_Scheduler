@@ -18,6 +18,7 @@ namespace Employee_Project_Review_Scheduler.Controllers
         {
             return View();
         }
+
         //Get Method to add the departments
         public ViewResult AddDesignations()
         {
